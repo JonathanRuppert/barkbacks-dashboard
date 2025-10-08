@@ -4,6 +4,7 @@ function PromptForm() {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [animationUrl, setAnimationUrl] = useState('');
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +29,16 @@ function PromptForm() {
 
       const imageData = await imageRes.json();
       setImageUrl(imageData.imageUrl);
+
+      // Fetch animation
+      const animateRes = await fetch('https://barkbacks-backend.onrender.com/api/animate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imageUrl: imageData.imageUrl }),
+      });
+
+      const animateData = await animateRes.json();
+      setAnimationUrl(animateData.animationUrl);
     } catch (err) {
       console.error('Error submitting prompt:', err);
     }
@@ -46,6 +57,12 @@ function PromptForm() {
 
       {response && <p>{response}</p>}
       {imageUrl && <img src={imageUrl} alt="Generated visual" style={{ maxWidth: '100%' }} />}
+      {animationUrl && (
+        <video controls style={{ maxWidth: '100%' }}>
+          <source src={animationUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
     </div>
   );
 }
