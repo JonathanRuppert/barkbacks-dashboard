@@ -1,34 +1,33 @@
 import React, { useState } from 'react';
 
-const ImageForm = ({ setImageUrl }) => {
+const ImageForm = () => {
   const [prompt, setPrompt] = useState('');
+  const [image, setImage] = useState('');
 
-  const handleGenerate = async (e) => {
-    e.preventDefault();
-
-    const res = await fetch('http://localhost:3000/generate-image', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
-    });
-
-    const data = await res.json();
-    setImageUrl(data.image_url);
+  const handleGenerate = async () => {
+    try {
+      const res = await fetch('https://barkbacks-backend.onrender.com/api/image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt }),
+      });
+      const data = await res.json();
+      setImage(data.imageUrl);
+    } catch (err) {
+      console.error('Image generation error:', err);
+    }
   };
 
   return (
-    <div style={{ marginTop: '2rem' }}>
-      <h2>Generate Image</h2>
-      <form onSubmit={handleGenerate}>
-        <input
-          type="text"
-          placeholder="Image Prompt"
-          value={prompt}
-          onChange={e => setPrompt(e.target.value)}
-          style={{ width: '100%', marginBottom: '1rem' }}
-        />
-        <button type="submit">Generate</button>
-      </form>
+    <div>
+      <input
+        type="text"
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        placeholder="Enter image prompt"
+      />
+      <button onClick={handleGenerate}>Generate Image</button>
+      {image && <img src={image} alt="Generated" />}
     </div>
   );
 };
