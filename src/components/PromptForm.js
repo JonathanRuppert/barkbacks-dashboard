@@ -5,6 +5,7 @@ function PromptForm() {
   const [response, setResponse] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [animationUrl, setAnimationUrl] = useState('');
+  const [creatorName, setCreatorName] = useState('Jonathan');
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +40,18 @@ function PromptForm() {
 
       const animateData = await animateRes.json();
       setAnimationUrl(animateData.animationUrl);
+
+      // Submit full story
+      await fetch('https://barkbacks-backend.onrender.com/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt,
+          imageUrl: imageData.imageUrl,
+          animationUrl: animateData.animationUrl,
+          creatorName,
+        }),
+      });
     } catch (err) {
       console.error('Error submitting prompt:', err);
     }
