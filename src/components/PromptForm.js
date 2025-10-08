@@ -1,36 +1,53 @@
 import React, { useState } from 'react';
 
-const PromptForm = () => {
+function PromptForm() {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const res = await fetch('https://barkbacks-backend.onrender.com/api/prompt', {
+      // Submit prompt
+      const promptRes = await fetch('https://barkbacks-backend.onrender.com/api/prompt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt }),
       });
-      const data = await res.json();
-      setResponse(data.result);
+
+      const promptData = await promptRes.json();
+      setResponse(promptData.result);
+
+      // Fetch image
+      const imageRes = await fetch('https://barkbacks-backend.onrender.com/api/image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt }),
+      });
+
+      const imageData = await imageRes.json();
+      setImageUrl(imageData.imageUrl);
     } catch (err) {
       console.error('Error submitting prompt:', err);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-        placeholder="Enter your prompt"
-      />
-      <button type="submit">Submit</button>
-      {response && <div className="response">{response}</div>}
-    </form>
+    <div>
+      <form onSubmit={onSubmit}>
+        <textarea
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          placeholder="Enter your magical pet story prompt..."
+        />
+        <button type="submit">Submit</button>
+      </form>
+
+      {response && <p>{response}</p>}
+      {imageUrl && <img src={imageUrl} alt="Generated visual" style={{ maxWidth: '100%' }} />}
+    </div>
   );
-};
+}
 
 export default PromptForm;
