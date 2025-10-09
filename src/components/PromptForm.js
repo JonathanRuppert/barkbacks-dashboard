@@ -1,82 +1,46 @@
 import React, { useState } from 'react';
+import { submitStory } from '../utils/storySubmitHandler';
 
-function PromptForm() {
+function PromptForm({ setImageUrl, setAnimationUrl }) {
   const [prompt, setPrompt] = useState('');
-  const [response, setResponse] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [animationUrl, setAnimationUrl] = useState('');
-  const [creatorName, setCreatorName] = useState('Jonathan');
+  const [error, setError] = useState('');
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+
+    if (!prompt || typeof prompt !== 'string' || prompt.trim() === '') {
+      setError('Please enter a valid prompt.');
+      return;
+    }
 
     try {
-      // Submit prompt
-      const promptRes = await fetch('https://barkbacks-backend.onrender.com/api/prompt', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt }),
-      });
+      console.log('Submitting prompt:', prompt);
+      const result = await submitStory(prompt);
 
-      const promptData = await promptRes.json();
-      setResponse(promptData.result);
-
-      // Fetch image
-      const imageRes = await fetch('https://barkbacks-backend.onrender.com/api/image', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt }),
-      });
-
-      const imageData = await imageRes.json();
-      setImageUrl(imageData.imageUrl);
-
-      // Fetch animation
-      const animateRes = await fetch('https://barkbacks-backend.onrender.com/api/animate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ imageUrl: imageData.imageUrl }),
-      });
-
-      const animateData = await animateRes.json();
-      setAnimationUrl(animateData.animationUrl);
-
-      // Submit full story
-      await fetch('https://barkbacks-backend.onrender.com/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          prompt,
-          imageUrl: imageData.imageUrl,
-          animationUrl: animateData.animationUrl,
-          creatorName,
-        }),
-      });
+      if (result) {
+        setImageUrl(result.imageUrl);
+        setAnimationUrl(result.animationUrl);
+      } else {
+        setError('Submission failed. Please try again.');
+      }
     } catch (err) {
-      console.error('Error submitting prompt:', err);
+      console.error('Error during submission:', err.message);
+      setError('Something went wrong. Please check the console.');
     }
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <textarea
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Enter your magical pet story prompt..."
-        />
-        <button type="submit">Submit</button>
-      </form>
-
-      {response && <p>{response}</p>}
-      {imageUrl && <img src={imageUrl} alt="Generated visual" style={{ maxWidth: '100%' }} />}
-      {animationUrl && (
-        <video controls style={{ maxWidth: '100%' }}>
-          <source src={animationUrl} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      )}
-    </div>
+    <form onSubmit={onSubmit}>
+      <input
+        type="text"
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        placeholder="Enter your magical pet prompt..."
+      />
+      <button type="submit">Submit</button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+    </form>
   );
 }
 
