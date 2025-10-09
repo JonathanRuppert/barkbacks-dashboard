@@ -1,21 +1,22 @@
-// animationHandler.js
+// src/utils/animationHandler.js
 
 export async function fetchAnimation(prompt) {
   try {
     const response = await fetch('/api/animate', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt }),
     });
 
-    const data = await response.json();
+    const result = await response.json();
 
-    // Return the animation URL if available
-    return data.animation || null;
+    if (!response.ok || !result.animation) {
+      throw new Error(result.error || 'Animation generation failed');
+    }
+
+    return result.animation;
   } catch (error) {
-    console.error('Animation fetch failed:', error.message);
+    console.error('Animation fetch error:', error.message);
     return null;
   }
 }
