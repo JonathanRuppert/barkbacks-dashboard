@@ -1,43 +1,29 @@
+// src/App.js
+
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PromptForm from './components/PromptForm';
-import ImageForm from './components/ImageForm';
-import AnimateForm from './components/AnimateForm';
-import SubmitForm from './components/SubmitForm';
-import StoryGallery from './components/StoryGallery';
-import CreatorGallery from './components/CreatorGallery';
 
 function App() {
   const [imageUrl, setImageUrl] = useState('');
-  const [voiceScript, setVoiceScript] = useState('');
-  const [videoUrl, setVideoUrl] = useState('');
+  const [animationUrl, setAnimationUrl] = useState('');
 
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div style={{ padding: '2rem' }}>
-              <h1>BarkBacks Creator Dashboard</h1>
-              <PromptForm setVoiceScript={setVoiceScript} />
-              <ImageForm setImageUrl={setImageUrl} />
-              <AnimateForm
-                imageUrl={imageUrl}
-                voiceScript={voiceScript}
-                setVideoUrl={setVideoUrl}
-              />
-              <SubmitForm
-                imageUrl={imageUrl}
-                videoUrl={videoUrl}
-              />
-              <StoryGallery />
-            </div>
-          }
-        />
-        <Route path="/creator/:id" element={<CreatorGallery />} />
-      </Routes>
-    </Router>
+    <div>
+      <h1>BarkBacks Story Creator</h1>
+      <PromptForm setImageUrl={setImageUrl} setAnimationUrl={setAnimationUrl} />
+      {imageUrl && (
+        <div>
+          <h2>Generated Image</h2>
+          <img src={imageUrl} alt="Generated story" style={{ maxWidth: '100%' }} />
+        </div>
+      )}
+      {animationUrl && (
+        <div>
+          <h2>Animation Preview</h2>
+          <video src={animationUrl} autoPlay loop muted style={{ maxWidth: '100%' }} />
+        </div>
+      )}
+    </div>
   );
 }
 
