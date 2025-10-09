@@ -65,4 +65,5 @@ function CreatorGallery({ setPrompt }) {
   );
 }
 
+
 export default CreatorGallery;
