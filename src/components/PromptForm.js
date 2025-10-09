@@ -1,3 +1,5 @@
+// src/components/PromptForm.js
+
 import React, { useState } from 'react';
 import { submitStory } from '../utils/storySubmitHandler';
 
