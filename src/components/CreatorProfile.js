@@ -10,6 +10,8 @@ function CreatorProfile({ creatorId }) {
       .catch((err) => console.error('Failed to fetch profile:', err));
   }, [creatorId]);
 
+  const isCampaignTag = (tag) => ['Fall 2025', 'Launch Week'].includes(tag);
+
   if (!profile) return <p>Loading profile...</p>;
 
   return (
@@ -27,8 +29,18 @@ function CreatorProfile({ creatorId }) {
               </p>
             )}
             <div style={{ marginTop: '0.5rem' }}>
-              {story.tags.map((tag) => (
-                <span key={tag} style={{ background: '#e0e0e0', padding: '0.3rem 0.6rem', marginRight: '0.4rem', borderRadius: '4px', fontSize: '0.8rem' }}>
+              {story.tags && story.tags.map((tag) => (
+                <span
+                  key={tag}
+                  style={{
+                    background: isCampaignTag(tag) ? '#ffd700' : '#e0e0e0',
+                    padding: '0.3rem 0.6rem',
+                    marginRight: '0.4rem',
+                    borderRadius: '4px',
+                    fontSize: '0.8rem',
+                    fontWeight: isCampaignTag(tag) ? 'bold' : 'normal',
+                  }}
+                >
                   {tag}
                 </span>
               ))}

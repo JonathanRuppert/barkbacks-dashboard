@@ -7,7 +7,7 @@ function CreatorGallery({ setPrompt }) {
     fetch('https://barkbacks-backend.onrender.com/api/stories')
       .then((res) => res.json())
       .then((data) => {
-        console.log('Fetched stories:', data); // ✅ Debug log
+        console.log('Fetched stories:', data);
         setStories(data);
       })
       .catch((err) => console.error('Failed to fetch stories:', err));
