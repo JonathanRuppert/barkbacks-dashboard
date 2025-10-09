@@ -6,7 +6,10 @@ function CreatorGallery({ setPrompt }) {
   useEffect(() => {
     fetch('https://barkbacks-backend.onrender.com/api/stories')
       .then((res) => res.json())
-      .then((data) => setStories(data))
+      .then((data) => {
+        console.log('Fetched stories:', data); // ✅ Debug log
+        setStories(data);
+      })
       .catch((err) => console.error('Failed to fetch stories:', err));
   }, []);
 
@@ -33,7 +36,7 @@ function CreatorGallery({ setPrompt }) {
               </p>
             )}
             <div style={{ marginTop: '0.5rem' }}>
-              {story.tags.map((tag) => (
+              {story.tags && story.tags.map((tag) => (
                 <span
                   key={tag}
                   style={{
