@@ -1,10 +1,14 @@
 // src/utils/imageHandler.js
 
 export async function fetchImage(prompt) {
+  console.log('Sending POST to /api/image with prompt:', prompt);
+
   try {
     const response = await fetch('/api/image', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ prompt }),
     });
 
