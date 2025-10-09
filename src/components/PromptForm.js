@@ -1,6 +1,6 @@
-// src/components/PromptForm.js
-
 import React, { useState } from 'react';
+import { fetchImage } from '../utils/imageHandler';
+import { fetchAnimation } from '../utils/animationHandler';
 import { submitStory } from '../utils/storySubmitHandler';
 
 function PromptForm({ setImageUrl, setAnimationUrl }) {
@@ -18,12 +18,25 @@ function PromptForm({ setImageUrl, setAnimationUrl }) {
 
     try {
       console.log('Submitting prompt:', prompt);
-      const result = await submitStory(prompt);
 
-      if (result) {
-        setImageUrl(result.imageUrl);
-        setAnimationUrl(result.animationUrl);
-      } else {
+      const imageUrl = await fetchImage(prompt);
+      const animationUrl = await fetchAnimation(prompt);
+
+      if (!imageUrl || !animationUrl) {
+        setError('Image or animation generation failed.');
+        return;
+      }
+
+      setImageUrl(imageUrl);
+      setAnimationUrl(animationUrl);
+
+      const result = await submitStory({
+        prompt,
+        image: imageUrl,
+        animation: animationUrl,
+      });
+
+      if (!result) {
         setError('Submission failed. Please try again.');
       }
     } catch (err) {
