@@ -1,10 +1,14 @@
 // src/utils/animationHandler.js
 
 export async function fetchAnimation(prompt) {
+  console.log('Sending POST to backend with prompt:', prompt);
+
   try {
-    const response = await fetch('/api/animate', {
+    const response = await fetch('https://barkbacks-backend.onrender.com/api/animate', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ prompt }),
     });
 
