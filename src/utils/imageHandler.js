@@ -1,3 +1,5 @@
+// src/utils/imageHandler.js
+
 export async function fetchImage(prompt) {
   console.log('Sending POST to backend with prompt:', prompt);
 
