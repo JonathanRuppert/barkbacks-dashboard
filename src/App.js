@@ -3,13 +3,19 @@ import PromptForm from './components/PromptForm';
 import CreatorGallery from './components/CreatorGallery';
 
 function App() {
+  const [prompt, setPrompt] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [animationUrl, setAnimationUrl] = useState('');
 
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>BarkBacks Story Creator</h1>
-      <PromptForm setImageUrl={setImageUrl} setAnimationUrl={setAnimationUrl} />
+      <PromptForm
+        prompt={prompt}
+        setPrompt={setPrompt}
+        setImageUrl={setImageUrl}
+        setAnimationUrl={setAnimationUrl}
+      />
 
       {imageUrl && (
         <div>
@@ -26,7 +32,7 @@ function App() {
       )}
 
       <hr style={{ margin: '3rem 0' }} />
-      <CreatorGallery />
+      <CreatorGallery setPrompt={setPrompt} />
     </div>
   );
 }

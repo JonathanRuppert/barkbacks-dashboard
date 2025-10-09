@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchImage } from '../utils/imageHandler';
 import { fetchAnimation } from '../utils/animationHandler';
 import { submitStory } from '../utils/storySubmitHandler';
 
-function PromptForm({ setImageUrl, setAnimationUrl }) {
-  const [prompt, setPrompt] = useState('');
+function PromptForm({ prompt, setPrompt, setImageUrl, setAnimationUrl }) {
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    setError('');
+  }, [prompt]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
