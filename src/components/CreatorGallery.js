@@ -10,8 +10,8 @@ function CreatorGallery({ setPrompt }) {
       .catch((err) => console.error('Failed to fetch stories:', err));
   }, []);
 
-  const handleRemix = (originalPrompt) => {
-    const remixTwist = ' — remixed from a dreamscape perspective';
+  const handleRemix = (originalPrompt, originalId) => {
+    const remixTwist = ` — remixed from ${originalId}`;
     setPrompt(originalPrompt + remixTwist);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -25,6 +25,11 @@ function CreatorGallery({ setPrompt }) {
             <img src={story.image} alt="Story preview" style={{ width: '100%', borderRadius: '6px' }} />
             <video src={story.animation} controls style={{ width: '100%', borderRadius: '6px', marginTop: '1rem' }} />
             <p style={{ fontStyle: 'italic', marginTop: '1rem' }}>“{story.prompt}”</p>
+            {story.remixedFrom && (
+              <p style={{ fontSize: '0.8rem', color: '#555' }}>
+                Remixed from <strong>{story.remixedFrom}</strong>
+              </p>
+            )}
             <div style={{ marginTop: '0.5rem' }}>
               {story.tags.map((tag) => (
                 <span key={tag} style={{ background: '#e0e0e0', padding: '0.3rem 0.6rem', marginRight: '0.4rem', borderRadius: '4px', fontSize: '0.8rem' }}>
@@ -33,7 +38,7 @@ function CreatorGallery({ setPrompt }) {
               ))}
             </div>
             <button
-              onClick={() => handleRemix(story.prompt)}
+              onClick={() => handleRemix(story.prompt, story.id)}
               style={{ marginTop: '1rem', background: '#ddeeff', border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', cursor: 'pointer' }}
             >
               🔄 Remix
