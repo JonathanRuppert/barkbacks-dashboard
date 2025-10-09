@@ -1,23 +1,26 @@
-// storySubmitHandler.js
-
-import { fetchImage } from './imageHandler';       // Your existing image fetch logic
-import { fetchAnimation } from './animationHandler'; // Already wired up
+import { fetchImage } from './imageHandler';
+import { fetchAnimation } from './animationHandler';
 
 export async function submitStory(prompt) {
   try {
-    if (!prompt || typeof prompt !== 'string') {
-      throw new Error('Invalid prompt');
+    if (!prompt || typeof prompt !== 'string' || prompt.trim() === '') {
+      throw new Error('Prompt is missing or invalid');
     }
 
-    // Step 1: Fetch image
+    console.log('Submitting to /api/animate:', { prompt });
+
     const imageUrl = await fetchImage(prompt);
     if (!imageUrl) throw new Error('Image generation failed');
 
-    // Step 2: Fetch animation
     const animationUrl = await fetchAnimation(prompt);
     if (!animationUrl) throw new Error('Animation generation failed');
 
-    // Step 3: Submit full story payload
+    console.log('Submitting to /api/submit:', {
+      prompt,
+      image: imageUrl,
+      animation: animationUrl,
+    });
+
     const response = await fetch('/api/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
