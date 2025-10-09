@@ -1,34 +1,36 @@
 import React, { useEffect, useState } from 'react';
+import './CreatorGallery.css';
 
-const CreatorGallery = () => {
-  const [creators, setCreators] = useState([]);
+function CreatorGallery() {
+  const [stories, setStories] = useState([]);
 
   useEffect(() => {
-    const fetchCreators = async () => {
-      try {
-        const res = await fetch('https://barkbacks-backend.onrender.com/api/creators');
-        const data = await res.json();
-        setCreators(data);
-      } catch (err) {
-        console.error('Error fetching creators:', err);
-      }
-    };
-
-    fetchCreators();
+    fetch('https://barkbacks-backend.onrender.com/api/stories')
+      .then((res) => res.json())
+      .then((data) => setStories(data))
+      .catch((err) => console.error('Failed to fetch stories:', err));
   }, []);
 
   return (
-    <div>
-      <h2>Creator Gallery</h2>
-      <ul>
-        {creators.map((creator, index) => (
-          <li key={index}>
-            <strong>{creator.name}</strong> — {creator.storyTitle}
-          </li>
+    <div className="gallery-container">
+      <h2>✨ BarkBacks Creator Gallery</h2>
+      <div className="gallery-grid">
+        {stories.map((story) => (
+          <div key={story.id} className="gallery-card">
+            <img src={story.image} alt="Story preview" className="gallery-image" />
+            <video src={story.animation} controls className="gallery-video" />
+            <p className="gallery-prompt">“{story.prompt}”</p>
+            <div className="gallery-tags">
+              {story.tags.map((tag) => (
+                <span key={tag} className="tag">{tag}</span>
+              ))}
+            </div>
+            <button className="like-button">❤️ Like</button>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
-};
+}
 
 export default CreatorGallery;
