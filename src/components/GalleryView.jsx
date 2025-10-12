@@ -1,4 +1,4 @@
-// GalleryView.jsx — BarkBacks story gallery with voice preview and emotion filter
+// GalleryView.jsx — BarkBacks story gallery with voice preview, emotion filter, and seasonal filter
 
 import React, { useEffect, useState } from 'react';
 
@@ -6,10 +6,13 @@ const GalleryView = () => {
   // 🧠 State for fetched stories
   const [stories, setStories] = useState([]);
 
-  // 🎨 State for emotion filter
+  // 🎨 Emotion filter state
   const [filter, setFilter] = useState('');
 
-  // ⏳ State for loading indicator
+  // 🍂 Seasonal filter state
+  const [seasonFilter, setSeasonFilter] = useState('');
+
+  // ⏳ Loading state
   const [loading, setLoading] = useState(true);
 
   // 🔊 Voice preview function
@@ -43,7 +46,7 @@ const GalleryView = () => {
     <div style={styles.gallery}>
       <h3>🎬 BarkBacks Gallery</h3>
 
-      {/* 🎨 Emotion Filter Dropdown */}
+      {/* 🎨 Emotion Filter */}
       <label>Filter by Emotion:</label>
       <select value={filter} onChange={(e) => setFilter(e.target.value)} style={styles.select}>
         <option value="">All</option>
@@ -51,6 +54,16 @@ const GalleryView = () => {
         <option value="Sadness">Sadness</option>
         <option value="Love">Love</option>
         <option value="Fear">Fear</option>
+      </select>
+
+      {/* 🍂 Seasonal Filter */}
+      <label>Filter by Season:</label>
+      <select value={seasonFilter} onChange={(e) => setSeasonFilter(e.target.value)} style={styles.select}>
+        <option value="">All</option>
+        <option value="Spring">Spring</option>
+        <option value="Summer">Summer</option>
+        <option value="Autumn">Autumn</option>
+        <option value="Winter">Winter</option>
       </select>
 
       {/* ⏳ Loading or empty state */}
@@ -62,12 +75,13 @@ const GalleryView = () => {
         // 🧠 Filter and render stories
         stories
           .filter((story) => !filter || story.emotion === filter)
+          .filter((story) => !seasonFilter || story.season === seasonFilter)
           .map((story) => (
             <div key={story._id} style={styles.card}>
               <h4>{story.petName} — <em>{story.emotion}</em></h4>
               <p>{story.storyText}</p>
-              <small>{new Date(story.createdAt).toLocaleString()}</small>
-              {/* 🔊 Voice Preview Button */}
+              <small>{new Date(story.createdAt).toLocaleString()}</small><br />
+              <small>Season: {story.season || 'Unknown'}</small><br />
               <button onClick={() => previewVoice(story)} style={styles.button}>
                 🔊 Preview Voice
               </button>
@@ -95,6 +109,7 @@ const styles = {
     marginBottom: '1rem',
     padding: '0.5rem',
     fontSize: '1rem',
+    display: 'block',
   },
   button: {
     marginTop: '0.5rem',
