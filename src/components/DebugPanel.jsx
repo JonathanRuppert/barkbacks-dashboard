@@ -9,13 +9,9 @@ const DebugPanel = () => {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await fetch('/api/test-db');
-        const data = await res.json();
-        if (res.ok) {
-          setStatus(data.message); // "Connected to MongoDB"
-        } else {
-          setStatus('Error: ' + data.message);
-        }
+        const res = await fetch('https://barkbacks-backend-1.onrender.com/api/test-db');
+        const data = await res.json(); // ✅ Parses JSON response
+        setStatus(data.message);       // "Connected to MongoDB"
       } catch (err) {
         setStatus('Fetch error: ' + err.message);
       }
