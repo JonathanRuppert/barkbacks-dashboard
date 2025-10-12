@@ -2,6 +2,7 @@
 
 import React from 'react';
 import DebugPanel from './components/DebugPanel';
+import StoryForm from './components/StoryForm';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
 
       <main style={styles.main}>
         <DebugPanel />
-        {/* Future components like StoryForm and GalleryView will go here */}
+        <StoryForm />
       </main>
 
       <footer style={styles.footer}>
