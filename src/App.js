@@ -3,6 +3,7 @@
 import React from 'react';
 import DebugPanel from './components/DebugPanel';
 import StoryForm from './components/StoryForm';
+import GalleryView from './components/GalleryView';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <main style={styles.main}>
         <DebugPanel />
         <StoryForm />
+        <GalleryView />
       </main>
 
       <footer style={styles.footer}>
