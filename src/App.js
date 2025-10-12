@@ -1,40 +1,49 @@
-import React, { useState } from 'react';
-import PromptForm from './components/PromptForm';
-import CreatorGallery from './components/CreatorGallery';
+// App.js — BarkBacks frontend root component
+
+import React from 'react';
+import DebugPanel from './components/DebugPanel';
 
 function App() {
-  const [prompt, setPrompt] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [animationUrl, setAnimationUrl] = useState('');
-
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>BarkBacks Story Creator</h1>
-      <PromptForm
-        prompt={prompt}
-        setPrompt={setPrompt}
-        setImageUrl={setImageUrl}
-        setAnimationUrl={setAnimationUrl}
-      />
+    <div style={styles.container}>
+      <header style={styles.header}>
+        <h1>BarkBacks 🐾</h1>
+        <p>Emotionally intelligent pet storytelling, powered by AI.</p>
+      </header>
 
-      {imageUrl && (
-        <div>
-          <h2>Generated Image</h2>
-          <img src={imageUrl} alt="Generated story" style={{ maxWidth: '100%', borderRadius: '8px' }} />
-        </div>
-      )}
+      <main style={styles.main}>
+        <DebugPanel />
+        {/* Future components like StoryForm and GalleryView will go here */}
+      </main>
 
-      {animationUrl && (
-        <div>
-          <h2>Animation Preview</h2>
-          <video src={animationUrl} autoPlay loop muted controls style={{ maxWidth: '100%', borderRadius: '8px' }} />
-        </div>
-      )}
-
-      <hr style={{ margin: '3rem 0' }} />
-      <CreatorGallery setPrompt={setPrompt} />
+      <footer style={styles.footer}>
+        <p>© {new Date().getFullYear()} BarkBacks. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
+
+const styles = {
+  container: {
+    fontFamily: 'Arial, sans-serif',
+    padding: '2rem',
+    maxWidth: '800px',
+    margin: '0 auto',
+    backgroundColor: '#fff',
+    color: '#333',
+  },
+  header: {
+    marginBottom: '2rem',
+    textAlign: 'center',
+  },
+  main: {
+    marginBottom: '2rem',
+  },
+  footer: {
+    textAlign: 'center',
+    fontSize: '0.9rem',
+    color: '#777',
+  },
+};
 
 export default App;
