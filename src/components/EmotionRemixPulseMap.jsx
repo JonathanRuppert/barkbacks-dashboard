@@ -1,14 +1,14 @@
-// EmotionRemixPulseMap.jsx — Animate remix activity across the creator network
+// EmotionRemixPulseMap.jsx — Animate remix intensity over time
 
 import React from 'react';
 
 const EmotionRemixPulseMap = () => {
-  const imageUrl = '/emotion_remix_pulse_map.png'; // Place this image in your public/ folder
+  const imageUrl = '/emotion_pulse_map.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
-      <h3>🫀 Emotion Remix Pulse Map</h3>
-      <p>This chart animates remix activity across the creator network, showing emotional spikes and remix flow in real time.</p>
+      <h3>❤️‍🔥 Emotion Remix Pulse Map</h3>
+      <p>This chart animates remix intensity over time using emotion-colored lines and timestamped pulses.</p>
       <img src={imageUrl} alt="Emotion Remix Pulse Map" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixPulseMap = () => {
 
 const styles = {
   panel: {
-    background: '#fff7e6',
+    background: '#fff1f0',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #ffd591',
+    border: '1px solid #ffa39e',
     marginTop: '2rem',
   },
   image: {
