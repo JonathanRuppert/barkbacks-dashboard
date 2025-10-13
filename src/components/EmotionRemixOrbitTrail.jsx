@@ -1,14 +1,14 @@
-// EmotionRemixOrbitTrail.jsx — Visualize remix orbit paths and emotional trails
+// EmotionRemixOrbitTrail.jsx — Visualize remix motion and emotional looping
 
 import React from 'react';
 
 const EmotionRemixOrbitTrail = () => {
-  const imageUrl = '/orbit_trail_chart.png'; // Place this image in your public/ folder
+  const imageUrl = '/remix_orbit_trail_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
       <h3>🪐 Emotion Remix Orbit Trail</h3>
-      <p>This chart visualizes remix orbit paths and emotional trails using circular tiers and emotion-colored creator nodes.</p>
+      <p>This chart visualizes remix motion and emotional looping using circular orbit tiers and emotion-colored creator nodes.</p>
       <img src={imageUrl} alt="Emotion Remix Orbit Trail Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixOrbitTrail = () => {
 
 const styles = {
   panel: {
-    background: '#fffbe6',
+    background: '#f0f5ff',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #ffe58f',
+    border: '1px solid #adc6ff',
     marginTop: '2rem',
   },
   image: {
