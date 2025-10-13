@@ -1,46 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const pulses = [
-  { emotion: 'Empathy', color: '#60A5FA' },
-  { emotion: 'Trust', color: '#34D399' },
-  { emotion: 'Excitement', color: '#FBBF24' },
-  { emotion: 'Calm', color: '#A78BFA' },
-  { emotion: 'Curiosity', color: '#F87171' }
+const pulsePairs = [
+  { creator: 'Joy', pet: 'Excitement', color: '#FBBF24' },
+  { creator: 'Comfort', pet: 'Trust', color: '#60A5FA' },
+  { creator: 'Curiosity', pet: 'Playfulness', color: '#34D399' },
+  { creator: 'Gratitude', pet: 'Affection', color: '#A78BFA' },
+  { creator: 'Calm', pet: 'Contentment', color: '#F87171' }
 ];
 
 const EmotionRemixPulseSync = () => {
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h2 style={{ textAlign: 'center' }}>💓 EmotionRemixPulseSync — Synchronized Rhythms</h2>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
-        {pulses.map((pulse, index) => (
+    <div style={{ padding: '2rem', fontFamily: 'sans-serif', textAlign: 'center' }}>
+      <h2>💓 EmotionRemixPulseSync — Creator & Pet Emotional Rhythms</h2>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
+        {pulsePairs.map((pair, index) => (
           <motion.div
-            key={pulse.emotion}
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: [1, 1.2, 1], opacity: 1 }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatDelay: 0.5,
-              delay: index * 0.3
-            }}
+            key={`${pair.creator}-${pair.pet}`}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: index * 0.3 }}
             style={{
-              backgroundColor: pulse.color,
+              backgroundColor: pair.color,
               color: '#fff',
               padding: '1rem',
-              margin: '0 0.5rem',
-              borderRadius: '50%',
-              width: '80px',
-              height: '80px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 'bold',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+              margin: '0.5rem',
+              borderRadius: '12px',
+              minWidth: '180px',
+              boxShadow: '0 0 12px rgba(0,0,0,0.2)',
+              fontWeight: 'bold'
             }}
           >
-            {pulse.emotion}
+            <div>👤 {pair.creator}</div>
+            <div>🐾 {pair.pet}</div>
           </motion.div>
         ))}
       </div>
