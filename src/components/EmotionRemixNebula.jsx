@@ -1,14 +1,14 @@
-// EmotionRemixNebula.jsx — Visualize emerging emotional remix clusters
+// EmotionRemixNebula.jsx — Visualize remix potential and emotional emergence
 
 import React from 'react';
 
 const EmotionRemixNebula = () => {
-  const imageUrl = '/emotional_remix_nebula_chart.png'; // Place this image in your public/ folder
+  const imageUrl = '/remix_potential_nebula_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
       <h3>🌫️ Emotion Remix Nebula</h3>
-      <p>This chart visualizes emerging emotional remix clusters before they fully form.</p>
+      <p>This chart visualizes remix potential and emotional emergence using nebula-style blooms and emotion-colored clouds.</p>
       <img src={imageUrl} alt="Emotion Remix Nebula Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixNebula = () => {
 
 const styles = {
   panel: {
-    background: '#e6f7ff',
+    background: '#f0f8ff',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #91d5ff',
+    border: '1px solid #87e8de',
     marginTop: '2rem',
   },
   image: {
