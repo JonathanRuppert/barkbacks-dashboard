@@ -1,4 +1,4 @@
-// EmotionRemixFusion.jsx — Visualize emotional remix blending between Alice and Iris
+// EmotionRemixFusion.jsx — Visualize remix blends where multiple emotions converge
 
 import React from 'react';
 
@@ -7,8 +7,8 @@ const EmotionRemixFusion = () => {
 
   return (
     <div style={styles.panel}>
-      <h3>🔗 Emotion Remix Fusion</h3>
-      <p>This chart visualizes emotional remix blending between Alice and Iris using mirrored curves and fusion bands.</p>
+      <h3>🎨 Emotion Remix Fusion</h3>
+      <p>This chart visualizes remix blends where multiple emotions converge using overlapping emotion circles and blend strength labels.</p>
       <img src={imageUrl} alt="Emotion Remix Fusion Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixFusion = () => {
 
 const styles = {
   panel: {
-    background: '#f0f5ff',
+    background: '#fefefe',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #adc6ff',
+    border: '1px solid #d9d9d9',
     marginTop: '2rem',
   },
   image: {
