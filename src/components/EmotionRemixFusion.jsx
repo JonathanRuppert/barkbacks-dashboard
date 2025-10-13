@@ -1,4 +1,4 @@
-// EmotionRemixFusion.jsx — Visualize remix convergence and emotional synthesis
+// EmotionRemixFusion.jsx — Visualize emotional blending in remix collaborations
 
 import React from 'react';
 
@@ -7,8 +7,8 @@ const EmotionRemixFusion = () => {
 
   return (
     <div style={styles.panel}>
-      <h3>🔀 Emotion Remix Fusion</h3>
-      <p>This chart visualizes remix convergence and emotional synthesis using fusion-style nodes and emotion-colored flows.</p>
+      <h3>🎨 Emotion Remix Fusion</h3>
+      <p>This chart visualizes emotional blending in remix collaborations using overlapping emotion-colored waves and fusion levels.</p>
       <img src={imageUrl} alt="Emotion Remix Fusion Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixFusion = () => {
 
 const styles = {
   panel: {
-    background: '#fff7e6',
+    background: '#fffbe6',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #ffd591',
+    border: '1px solid #ffe58f',
     marginTop: '2rem',
   },
   image: {
