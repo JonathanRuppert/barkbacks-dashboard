@@ -1,14 +1,14 @@
-// EmotionRemixSpectrum.jsx — Compare emotional remix balance across creators
+// EmotionRemixSpectrum.jsx — Visualize emotional range across all creators
 
 import React from 'react';
 
 const EmotionRemixSpectrum = () => {
-  const imageUrl = '/emotional_remix_balance_chart.png'; // Place this image in your public/ folder
+  const imageUrl = '/emotional_range_spectrum_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
-      <h3>📊 Emotion Remix Spectrum</h3>
-      <p>This chart compares emotional remix balance across creators using stacked horizontal bars.</p>
+      <h3>🌈 Emotion Remix Spectrum</h3>
+      <p>This chart visualizes emotional range across all creators using horizontal bars color-coded by emotion.</p>
       <img src={imageUrl} alt="Emotion Remix Spectrum Chart" style={styles.image} />
     </div>
   );
@@ -16,7 +16,7 @@ const EmotionRemixSpectrum = () => {
 
 const styles = {
   panel: {
-    background: '#f6ffed',
+    background: '#f0fff0',
     padding: '1rem',
     borderRadius: '8px',
     border: '1px solid #b7eb8f',
