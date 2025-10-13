@@ -1,6 +1,12 @@
+// StoryGallery.jsx — Renders full story cards with emotional styling
+
 import React from 'react';
 
 const StoryGallery = ({ stories }) => {
+  if (!Array.isArray(stories)) {
+    return <p>No stories available.</p>;
+  }
+
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h2>📖 BarkBacks Story Gallery</h2>
@@ -31,7 +37,7 @@ const StoryGallery = ({ stories }) => {
   );
 };
 
-// Optional: Emotion color mapping
+// 🎨 Emotion color mapping
 const getEmotionColor = (emotion) => {
   const colors = {
     Joy: '#FBBF24',

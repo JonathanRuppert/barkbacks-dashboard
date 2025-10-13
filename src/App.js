@@ -16,7 +16,13 @@ function App() {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        setStories(data);
+
+        // Defensive check to ensure data is an array
+        if (Array.isArray(data)) {
+          setStories(data);
+        } else {
+          throw new Error('Invalid response format');
+        }
       } catch (err) {
         console.error('Error fetching stories:', err);
         setError(err.message);
