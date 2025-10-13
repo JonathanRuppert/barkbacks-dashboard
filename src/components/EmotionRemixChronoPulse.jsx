@@ -1,4 +1,4 @@
-// EmotionRemixChronoPulse.jsx — Visualize remix rhythm and emotional timing
+// EmotionRemixChronoPulse.jsx — Visualize rhythmic fusion beats and emotional surges over time
 
 import React from 'react';
 
@@ -7,8 +7,8 @@ const EmotionRemixChronoPulse = () => {
 
   return (
     <div style={styles.panel}>
-      <h3>⏱️ Emotion Remix Chrono Pulse</h3>
-      <p>This chart visualizes remix rhythm and emotional timing using vertical emotion-colored pulses mapped hourly across creators.</p>
+      <h3>🎵 Emotion Remix Chrono Pulse</h3>
+      <p>This chart visualizes rhythmic fusion beats and emotional surges over time using vertical emotion-colored pulses.</p>
       <img src={imageUrl} alt="Emotion Remix Chrono Pulse Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixChronoPulse = () => {
 
 const styles = {
   panel: {
-    background: '#fffbe6',
+    background: '#f0f5ff',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #ffe58f',
+    border: '1px solid #adc6ff',
     marginTop: '2rem',
   },
   image: {
