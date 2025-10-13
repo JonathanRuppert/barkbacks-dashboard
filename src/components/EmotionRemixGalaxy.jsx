@@ -1,14 +1,14 @@
-// EmotionRemixGalaxy.jsx — Visualize remix constellations across modules and creators
+// EmotionRemixGalaxy.jsx — Visualize remix constellations and emotional clusters
 
 import React from 'react';
 
 const EmotionRemixGalaxy = () => {
-  const imageUrl = '/emotion_remix_constellations.png'; // Place this image in your public/ folder
+  const imageUrl = '/remix_galaxy_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
       <h3>🌌 Emotion Remix Galaxy</h3>
-      <p>This chart visualizes remix constellations across modules and creators using a radial layout with emotion-colored paths.</p>
+      <p>This chart visualizes remix constellations and emotional clusters across creators using expressive galaxies grouped by emotion.</p>
       <img src={imageUrl} alt="Emotion Remix Galaxy Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixGalaxy = () => {
 
 const styles = {
   panel: {
-    background: '#f9f0ff',
+    background: '#f0f5ff',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #d3adf7',
+    border: '1px solid #adc6ff',
     marginTop: '2rem',
   },
   image: {
