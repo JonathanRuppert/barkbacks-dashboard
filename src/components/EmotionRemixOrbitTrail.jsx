@@ -1,14 +1,14 @@
-// EmotionRemixOrbitTrail.jsx — Track long-term remix paths for individual creators
+// EmotionRemixOrbitTrail.jsx — Trace remix paths over time per creator
 
 import React from 'react';
 
 const EmotionRemixOrbitTrail = () => {
-  const imageUrl = '/emotional_remix_trail_chart.png'; // Place this image in your public/ folder
+  const imageUrl = '/orbit_remix_trails.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
-      <h3>🧭 Emotion Remix Orbit Trail</h3>
-      <p>This chart tracks Alice’s long-term remix journey across modules, emotions, and expressive intensity.</p>
+      <h3>🪐 Emotion Remix Orbit Trail</h3>
+      <p>This chart traces remix paths over time per creator using emotion-colored orbit points and timestamp progression.</p>
       <img src={imageUrl} alt="Emotion Remix Orbit Trail Chart" style={styles.image} />
     </div>
   );
