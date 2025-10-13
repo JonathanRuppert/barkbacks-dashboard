@@ -1,43 +1,60 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const nebulaEmotions = [
-  { label: 'Inspiration', color: '#FBBF24', x: -80, y: -40 },
-  { label: 'Solitude', color: '#A78BFA', x: 60, y: -60 },
-  { label: 'Joy', color: '#F87171', x: -50, y: 70 },
-  { label: 'Gratitude', color: '#34D399', x: 80, y: 50 },
-  { label: 'Mystery', color: '#60A5FA', x: 0, y: 0 }
+const nebulaClusters = [
+  {
+    theme: 'Radiance',
+    emotions: ['Joy', 'Wonder', 'Excitement'],
+    color: '#FBBF24'
+  },
+  {
+    theme: 'Reflection',
+    emotions: ['Nostalgia', 'Gratitude', 'Comfort'],
+    color: '#60A5FA'
+  },
+  {
+    theme: 'Momentum',
+    emotions: ['Curiosity', 'Hope', 'Liberation'],
+    color: '#34D399'
+  },
+  {
+    theme: 'Depth',
+    emotions: ['Resilience', 'Calm', 'Trust'],
+    color: '#A78BFA'
+  },
+  {
+    theme: 'Bond',
+    emotions: ['Love', 'Affection', 'Connection'],
+    color: '#F87171'
+  }
 ];
 
 const EmotionRemixNebula = () => {
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif', textAlign: 'center' }}>
-      <h2>🌌 EmotionRemixNebula — Emotional Clusters</h2>
-      <div style={{ position: 'relative', height: '300px', marginTop: '2rem' }}>
-        {nebulaEmotions.map((emotion, index) => (
+      <h2>🌌 EmotionRemixNebula — Cosmic Emotional Clusters</h2>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
+        {nebulaClusters.map((cluster, index) => (
           <motion.div
-            key={emotion.label}
+            key={cluster.theme}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.3 }}
             style={{
-              position: 'absolute',
-              left: `calc(50% + ${emotion.x}px)`,
-              top: `calc(50% + ${emotion.y}px)`,
-              backgroundColor: emotion.color,
+              backgroundColor: cluster.color,
               color: '#fff',
               padding: '1rem',
-              borderRadius: '50%',
-              width: '100px',
-              height: '100px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 'bold',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+              margin: '0.5rem',
+              borderRadius: '12px',
+              minWidth: '200px',
+              boxShadow: '0 0 12px rgba(0,0,0,0.2)',
+              fontWeight: 'bold'
             }}
           >
-            {emotion.label}
+            <div style={{ fontSize: '1.2rem' }}>{cluster.theme}</div>
+            <div style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
+              {cluster.emotions.join(', ')}
+            </div>
           </motion.div>
         ))}
       </div>
