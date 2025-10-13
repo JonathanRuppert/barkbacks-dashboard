@@ -1,14 +1,14 @@
-// EmotionRemixPulse.jsx — Animate emotional remix spikes in real time
+// EmotionRemixPulse.jsx — Animate remix intensity over time like a heartbeat
 
 import React from 'react';
 
 const EmotionRemixPulse = () => {
-  const imageUrl = '/emotion_remix_pulse_chart.png'; // Place this image in your public/ folder
+  const imageUrl = '/remix_pulse_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
-      <h3>⚡ Emotion Remix Pulse</h3>
-      <p>This animation shows emotional remix spikes in real time as new stories are remixed.</p>
+      <h3>🎵 Emotion Remix Pulse</h3>
+      <p>This chart animates remix intensity over time like a heartbeat, showing emotional tempo and expressive rhythm.</p>
       <img src={imageUrl} alt="Emotion Remix Pulse Chart" style={styles.image} />
     </div>
   );
