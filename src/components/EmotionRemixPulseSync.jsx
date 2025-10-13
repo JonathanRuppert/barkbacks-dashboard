@@ -3,12 +3,12 @@
 import React from 'react';
 
 const EmotionRemixPulseSync = () => {
-  const imageUrl = '/remix_pulse_sync_chart.png'; // Place this image in your public/ folder
+  const imageUrl = '/pulse_sync_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
       <h3>🔁 Emotion Remix Pulse Sync</h3>
-      <p>This chart visualizes remix synchronization and emotional alignment using overlapping waveforms and emotion-colored pulses.</p>
+      <p>This chart visualizes remix synchronization and emotional alignment using vertical emotion-colored pulses and rhythmic beats.</p>
       <img src={imageUrl} alt="Emotion Remix Pulse Sync Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixPulseSync = () => {
 
 const styles = {
   panel: {
-    background: '#f0ffff',
+    background: '#f6ffed',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #87e8de',
+    border: '1px solid #b7eb8f',
     marginTop: '2rem',
   },
   image: {
