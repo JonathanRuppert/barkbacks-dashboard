@@ -2,9 +2,8 @@
   "name": "barkbacks-dashboard",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://barkbacks-dashboard.vercel.app",
   "dependencies": {
-    "framer-motion": "^12.23.24",
+    "framer-motion": "^10.16.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^0.0.0"
