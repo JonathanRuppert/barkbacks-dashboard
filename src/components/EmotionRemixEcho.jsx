@@ -1,25 +1,25 @@
-// EmotionRemixEcho.jsx — Trace emotional remix echoes across time and creators
+// EmotionRemixEcho.jsx — Trace emotional remix reverberation across creators
 
 import React from 'react';
 
 const EmotionRemixEcho = () => {
-  const imageUrl = '/remix_ripple_animation.png'; // Place this image in your public/ folder
+  const imageUrl = '/emotion_remix_echo_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
-      <h3>🌀 Emotion Remix Echo</h3>
-      <p>This ripple animation traces how one remix story echoed across time and creators.</p>
-      <img src={imageUrl} alt="Emotion Remix Echo Ripple Chart" style={styles.image} />
+      <h3>🔁 Emotion Remix Echo</h3>
+      <p>This chart traces how remix emotion reverberates across creators over time using ripple arrows and fading lines.</p>
+      <img src={imageUrl} alt="Emotion Remix Echo Chart" style={styles.image} />
     </div>
   );
 };
 
 const styles = {
   panel: {
-    background: '#f0f5ff',
+    background: '#e6f7ff',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #adc6ff',
+    border: '1px solid #91d5ff',
     marginTop: '2rem',
   },
   image: {
