@@ -10,8 +10,8 @@ const DebugPanel = () => {
     const fetchStatus = async () => {
       try {
         const res = await fetch('https://barkbacks-backend-1.onrender.com/api/test-db');
-        const data = await res.json(); // ✅ Parses JSON response
-        setStatus(data.message);       // "Connected to MongoDB"
+        const data = await res.json();
+        setStatus(data.message);
       } catch (err) {
         setStatus('Fetch error: ' + err.message);
       }
