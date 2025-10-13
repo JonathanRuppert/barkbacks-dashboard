@@ -1,15 +1,15 @@
-// EmotionRemixMap.jsx — Unify all emotional visualization modules into one expressive topology
+// EmotionRemixMap.jsx — Visualize the full emotional universe and remix constellation
 
 import React from 'react';
 
 const EmotionRemixMap = () => {
-  const imageUrl = '/unified_emotional_topology.png'; // Place this image in your public/ folder
+  const imageUrl = '/emotion_remix_map_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
-      <h3>🌌 Emotion Remix Map</h3>
-      <p>This chart unifies all emotional visualization modules into one expressive topology — showing how Aurora, Chrono, PulseField, Tide, Cascade, OrbitTrail, EchoDepth, and Nova interconnect across creators.</p>
-      <img src={imageUrl} alt="Unified Emotional Topology Chart" style={styles.image} />
+      <h3>🗺️ Emotion Remix Map</h3>
+      <p>This chart visualizes the full emotional universe and remix constellation across creators and modules.</p>
+      <img src={imageUrl} alt="Emotion Remix Map Chart" style={styles.image} />
     </div>
   );
 };
