@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
+import { EmotionContext } from './EmotionContext';
 
 const constellationNodes = [
   { name: 'Aurora', color: '#FBBF24', x: -100, y: -60, symbol: '🌈' },
@@ -20,33 +21,42 @@ const constellationNodes = [
 ];
 
 const EmotionRemixConstellationMap = () => {
+  const { emotionData } = useContext(EmotionContext);
+
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif', textAlign: 'center' }}>
       <h2>🌠 EmotionRemixConstellationMap — Interactive Emotional Universe</h2>
+      <h3>Current Mood: {emotionData.mood}</h3>
       <div style={{ position: 'relative', height: '600px', marginTop: '2rem' }}>
-        {constellationNodes.map((node, index) => (
-          <motion.div
-            key={node.name}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.2 }}
-            style={{
-              position: 'absolute',
-              left: `calc(50% + ${node.x}px)`,
-              top: `calc(50% + ${node.y}px)`,
-              backgroundColor: node.color,
-              color: '#fff',
-              padding: '0.5rem 1rem',
-              borderRadius: '12px',
-              fontWeight: 'bold',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
-              cursor: 'pointer'
-            }}
-            title={`${node.name} — ${node.symbol}`}
-          >
-            {node.symbol} {node.name}
-          </motion.div>
-        ))}
+        {constellationNodes.map((node, index) => {
+          const isActive = node.name.toLowerCase() === emotionData.mood.toLowerCase();
+          return (
+            <motion.div
+              key={node.name}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: isActive ? 1.3 : 1 }}
+              transition={{ delay: index * 0.2 }}
+              style={{
+                position: 'absolute',
+                left: `calc(50% + ${node.x}px)`,
+                top: `calc(50% + ${node.y}px)`,
+                backgroundColor: node.color,
+                color: '#fff',
+                padding: '0.5rem 1rem',
+                borderRadius: '12px',
+                fontWeight: 'bold',
+                boxShadow: isActive
+                  ? '0 0 20px rgba(255,255,255,0.6)'
+                  : '0 4px 10px rgba(0,0,0,0.2)',
+                cursor: 'pointer',
+                zIndex: isActive ? 2 : 1
+              }}
+              title={`${node.name} — ${node.symbol}`}
+            >
+              {node.symbol} {node.name}
+            </motion.div>
+          );
+        })}
         <div
           style={{
             position: 'absolute',

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { EmotionContext } from './EmotionContext';
 
 const modules = [
   { name: 'Aurora', color: '#FBBF24', symbol: '🌈' },
@@ -21,6 +22,8 @@ const modules = [
 
 const EmotionRemixCarousel = () => {
   const [index, setIndex] = useState(0);
+  const { emotionData } = useContext(EmotionContext);
+  const current = modules[index];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,11 +32,9 @@ const EmotionRemixCarousel = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const current = modules[index];
-
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif', textAlign: 'center' }}>
-      <h2>🎠 EmotionRemixCarousel — Dashboard Showcase</h2>
+    <div style={{ padding: '2rem', textAlign: 'center' }}>
+      <h3>Current Mood: {emotionData.mood}</h3>
       <AnimatePresence mode="wait">
         <motion.div
           key={current.name}
