@@ -1,14 +1,14 @@
-// EmotionRemixCascade.jsx — Visualize emotional remix chain reactions across creators
+// EmotionRemixCascade.jsx — Visualize remix chain reactions and emotional ripple effects
 
 import React from 'react';
 
 const EmotionRemixCascade = () => {
-  const imageUrl = '/emotional_remix_cascade_chart.png'; // Place this image in your public/ folder
+  const imageUrl = '/remix_chain_reactions_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
-      <h3>🎯 Emotion Remix Cascade</h3>
-      <p>This chart visualizes emotional remix chain reactions across creators using layered arrows and color-coded flows.</p>
+      <h3>🌊 Emotion Remix Cascade</h3>
+      <p>This chart visualizes remix chain reactions and emotional ripple effects using emotion-colored lines and cascading layout.</p>
       <img src={imageUrl} alt="Emotion Remix Cascade Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixCascade = () => {
 
 const styles = {
   panel: {
-    background: '#f6ffed',
+    background: '#e6fffb',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #b7eb8f',
+    border: '1px solid #87e8de',
     marginTop: '2rem',
   },
   image: {
