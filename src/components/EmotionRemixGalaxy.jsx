@@ -1,4 +1,4 @@
-// EmotionRemixGalaxy.jsx — Cluster creators into emotional remix galaxies
+// EmotionRemixGalaxy.jsx — Visualize emotional remix ecosystems across genres and emotional domains
 
 import React from 'react';
 
@@ -8,7 +8,7 @@ const EmotionRemixGalaxy = () => {
   return (
     <div style={styles.panel}>
       <h3>🌌 Emotion Remix Galaxy</h3>
-      <p>This chart clusters creators into emotional remix galaxies based on remix style and intensity.</p>
+      <p>This chart visualizes remix ecosystems across genres and emotional domains using spiral arms and color-coded stars.</p>
       <img src={imageUrl} alt="Emotion Remix Galaxy Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixGalaxy = () => {
 
 const styles = {
   panel: {
-    background: '#fff0f6',
+    background: '#fffbe6',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #ffadd2',
+    border: '1px solid #ffe58f',
     marginTop: '2rem',
   },
   image: {
