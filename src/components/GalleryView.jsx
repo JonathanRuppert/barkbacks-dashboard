@@ -3,19 +3,11 @@
 import React, { useEffect, useState } from 'react';
 
 const GalleryView = () => {
-  // 🧠 State for fetched stories
   const [stories, setStories] = useState([]);
-
-  // 🎨 Emotion filter state
   const [filter, setFilter] = useState('');
-
-  // 🍂 Seasonal filter state
   const [seasonFilter, setSeasonFilter] = useState('');
-
-  // ⏳ Loading state
   const [loading, setLoading] = useState(true);
 
-  // 🔊 Voice preview function
   const previewVoice = (story) => {
     const utterance = new SpeechSynthesisUtterance(
       `${story.petName} feels ${story.emotion}. ${story.storyText}`
@@ -25,15 +17,21 @@ const GalleryView = () => {
     speechSynthesis.speak(utterance);
   };
 
-  // 🌐 Fetch stories from backend
   useEffect(() => {
     const fetchStories = async () => {
       try {
         const res = await fetch('https://barkbacks-backend-1.onrender.com/api/stories');
         const data = await res.json();
-        setStories(data);
+
+        if (!Array.isArray(data)) {
+          console.warn('Unexpected response format:', data);
+          setStories([]);
+        } else {
+          setStories(data);
+        }
       } catch (err) {
         console.error('Error fetching stories:', err);
+        setStories([]);
       } finally {
         setLoading(false);
       }
@@ -46,7 +44,6 @@ const GalleryView = () => {
     <div style={styles.gallery}>
       <h3>🎬 BarkBacks Gallery</h3>
 
-      {/* 🎨 Emotion Filter */}
       <label>Filter by Emotion:</label>
       <select value={filter} onChange={(e) => setFilter(e.target.value)} style={styles.select}>
         <option value="">All</option>
@@ -56,7 +53,6 @@ const GalleryView = () => {
         <option value="Fear">Fear</option>
       </select>
 
-      {/* 🍂 Seasonal Filter */}
       <label>Filter by Season:</label>
       <select value={seasonFilter} onChange={(e) => setSeasonFilter(e.target.value)} style={styles.select}>
         <option value="">All</option>
@@ -66,14 +62,13 @@ const GalleryView = () => {
         <option value="Winter">Winter</option>
       </select>
 
-      {/* ⏳ Loading or empty state */}
       {loading ? (
         <p>Loading stories...</p>
       ) : stories.length === 0 ? (
         <p>No BarkBacks yet. Submit one above!</p>
       ) : (
-        // 🧠 Filter and render stories
         stories
+          .filter((story) => typeof story === 'object' && story !== null)
           .filter((story) => !filter || story.emotion === filter)
           .filter((story) => !seasonFilter || story.season === seasonFilter)
           .map((story) => (
