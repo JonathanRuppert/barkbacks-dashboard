@@ -1,14 +1,14 @@
-// EmotionRemixTide.jsx — Visualize emotional remix volume as flowing tides
+// EmotionRemixTide.jsx — Show remix flow across time zones and global creators
 
 import React from 'react';
 
 const EmotionRemixTide = () => {
-  const imageUrl = '/emotional_remix_tide_chart.png'; // Place this image in your public/ folder
+  const imageUrl = '/global_remix_tide_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
       <h3>🌊 Emotion Remix Tide</h3>
-      <p>This chart visualizes emotional remix volume as flowing waves across the day.</p>
+      <p>This chart shows remix flow across time zones and global creators using emotion-colored waves and timestamped paths.</p>
       <img src={imageUrl} alt="Emotion Remix Tide Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixTide = () => {
 
 const styles = {
   panel: {
-    background: '#e6fffb',
+    background: '#e6f7ff',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #87e8de',
+    border: '1px solid #91d5ff',
     marginTop: '2rem',
   },
   image: {
