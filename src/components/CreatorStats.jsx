@@ -7,6 +7,8 @@ const CreatorStats = ({ creatorId }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log('CreatorStats mounted with creatorId:', creatorId);
+
     const fetchStats = async () => {
       if (!creatorId) {
         console.warn('No creatorId provided');
@@ -16,10 +18,13 @@ const CreatorStats = ({ creatorId }) => {
 
       try {
         const res = await fetch(`https://barkbacks-backend-1.onrender.com/api/stats/${creatorId}`);
+        if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
+        console.log('Stats response:', data);
         setStats(data);
       } catch (err) {
         console.error('Error fetching creator stats:', err);
+        setStats({ total: 0, emotions: [], seasons: [] }); // fallback
       } finally {
         setLoading(false);
       }
