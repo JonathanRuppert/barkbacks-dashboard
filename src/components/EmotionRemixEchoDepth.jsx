@@ -1,4 +1,4 @@
-// EmotionRemixEchoDepth.jsx — Visualize remix impact tiers and emotional amplification
+// EmotionRemixEchoDepth.jsx — Visualize remix resonance tiers and emotional amplification
 
 import React from 'react';
 
@@ -8,7 +8,7 @@ const EmotionRemixEchoDepth = () => {
   return (
     <div style={styles.panel}>
       <h3>🎯 Emotion Remix Echo Depth</h3>
-      <p>This chart visualizes remix impact tiers and emotional amplification using concentric ripple layers and emotion-colored creator nodes.</p>
+      <p>This chart visualizes remix resonance tiers and emotional amplification using concentric ripple layers and emotion-colored creator nodes.</p>
       <img src={imageUrl} alt="Emotion Remix Echo Depth Chart" style={styles.image} />
     </div>
   );
