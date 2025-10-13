@@ -1,14 +1,14 @@
-// EmotionRemixContrast.jsx — Compare emotional remix styles between two creators
+// EmotionRemixContrast.jsx — Compare emotional remix differences between two creators
 
 import React from 'react';
 
 const EmotionRemixContrast = () => {
-  const imageUrl = '/emotion_remix_comparison.png'; // Place this image in your public/ folder
+  const imageUrl = '/emotional_remix_contrast_chart.png'; // Place this image in your public/ folder
 
   return (
     <div style={styles.panel}>
       <h3>🔍 Emotion Remix Contrast</h3>
-      <p>This chart compares emotional remix styles between Alice and Iris side by side.</p>
+      <p>This chart compares emotional remix differences between two creators using side-by-side bars and color-coded emotion segments.</p>
       <img src={imageUrl} alt="Emotion Remix Contrast Chart" style={styles.image} />
     </div>
   );
@@ -16,10 +16,10 @@ const EmotionRemixContrast = () => {
 
 const styles = {
   panel: {
-    background: '#fff0f6',
+    background: '#fff0f0',
     padding: '1rem',
     borderRadius: '8px',
-    border: '1px solid #ffadd2',
+    border: '1px solid #ffccc7',
     marginTop: '2rem',
   },
   image: {
