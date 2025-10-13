@@ -1,4 +1,4 @@
-// EmotionRemixTide.jsx — Animate remix flow like emotional currents
+// EmotionRemixTide.jsx — Visualize remix flow and emotional momentum
 
 import React from 'react';
 
@@ -8,7 +8,7 @@ const EmotionRemixTide = () => {
   return (
     <div style={styles.panel}>
       <h3>🌊 Emotion Remix Tide</h3>
-      <p>This chart animates remix flow like emotional currents using tide-style waves and emotion-colored bands.</p>
+      <p>This chart visualizes remix flow and emotional momentum using tide-style sine waves and emotion-colored currents.</p>
       <img src={imageUrl} alt="Emotion Remix Tide Chart" style={styles.image} />
     </div>
   );
