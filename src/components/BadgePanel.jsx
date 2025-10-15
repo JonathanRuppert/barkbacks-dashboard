@@ -11,7 +11,7 @@ const BadgePanel = ({ creatorId }) => {
 
     const fetchBadges = async () => {
       try {
-        const res = await fetch(`https://barkbacks-backend-1.onrender.com/api/badges/${creatorId}`);
+        const res = await fetch(`https://barkbacks-api.onrender.com/api/badges/${creatorId}`);
         const data = await res.json();
         setBadges(data.badges || []);
       } catch (err) {

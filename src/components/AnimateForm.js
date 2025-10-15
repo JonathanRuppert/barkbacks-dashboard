@@ -6,7 +6,7 @@ const AnimateForm = () => {
 
   const handleAnimate = async () => {
     try {
-      const res = await fetch('https://barkbacks-backend.onrender.com/api/animate', {
+      const res = await fetch('https://barkbacks-api.onrender.com/api/animate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ imageUrl }),

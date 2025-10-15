@@ -4,7 +4,7 @@ function CreatorGallery({ setPrompt }) {
   const [stories, setStories] = useState([]);
 
   useEffect(() => {
-    fetch('https://barkbacks-backend.onrender.com/api/stories')
+    fetch('https://barkbacks-api.onrender.com/api/stories')
       .then((res) => res.json())
       .then((data) => {
         console.log('Fetched stories:', data);

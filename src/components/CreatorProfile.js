@@ -4,7 +4,7 @@ function CreatorProfile({ creatorId }) {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    fetch(`https://barkbacks-backend.onrender.com/api/profile/${creatorId}`)
+    fetch(`https://barkbacks-api.onrender.com/api/profile/${creatorId}`)
       .then((res) => res.json())
       .then((data) => setProfile(data))
       .catch((err) => console.error('Failed to fetch profile:', err));

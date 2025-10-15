@@ -6,7 +6,7 @@ const ImageForm = () => {
 
   const handleGenerate = async () => {
     try {
-      const res = await fetch('https://barkbacks-backend.onrender.com/api/image', {
+      const res = await fetch('https://barkbacks-api.onrender.com/api/image', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt }),

@@ -13,7 +13,7 @@ const StoryForm = () => {
     setStatus('Submitting...');
 
     try {
-      const res = await fetch('https://barkbacks-backend-1.onrender.com/api/create-story', {
+      const res = await fetch('https://barkbacks-api.onrender.com/api/create-story', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ petName, emotion, storyText }),

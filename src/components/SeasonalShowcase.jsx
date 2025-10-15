@@ -9,7 +9,7 @@ const SeasonalShowcase = () => {
   useEffect(() => {
     const fetchSeasonal = async () => {
       try {
-        const res = await fetch('https://barkbacks-backend-1.onrender.com/api/seasonal-stories');
+        const res = await fetch('https://barkbacks-api.onrender.com/api/seasonal-stories');
         const data = await res.json();
         if (!Array.isArray(data)) {
           console.warn('Unexpected seasonal response:', data);

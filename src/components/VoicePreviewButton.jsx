@@ -9,7 +9,7 @@ const VoicePreviewButton = ({ text }) => {
   const fetchVoice = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`https://barkbacks-backend-1.onrender.com/api/speak?text=${encodeURIComponent(text)}`);
+      const res = await fetch(`https://barkbacks-api.onrender.com/api/speak?text=${encodeURIComponent(text)}`);
       const data = await res.json();
       if (data.audioUrl) {
         setAudioUrl(data.audioUrl);

@@ -11,7 +11,7 @@ const PetGallery = ({ petId, petName }) => {
 
     const fetchPetStories = async () => {
       try {
-        const res = await fetch(`https://barkbacks-backend-1.onrender.com/api/pet-stories/${petId}`);
+        const res = await fetch(`https://barkbacks-api.onrender.com/api/pet-stories/${petId}`);
         const data = await res.json();
         if (!Array.isArray(data)) {
           console.warn('Unexpected pet story response:', data);

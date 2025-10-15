@@ -5,7 +5,7 @@ const GalleryView = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://barkbacks-backend-1.onrender.com/api/stories')
+    fetch('https://barkbacks-api.onrender.com/api/stories')
       .then(res => {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);

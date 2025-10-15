@@ -9,7 +9,7 @@ const CampaignSpotlight = () => {
   useEffect(() => {
     const fetchCampaign = async () => {
       try {
-        const res = await fetch('https://barkbacks-backend-1.onrender.com/api/campaigns/current');
+        const res = await fetch('https://barkbacks-api.onrender.com/api/campaigns/current');
         const data = await res.json();
         setCampaign(data);
       } catch (err) {

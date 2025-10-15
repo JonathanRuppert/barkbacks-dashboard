@@ -17,7 +17,7 @@ const CreatorStats = ({ creatorId }) => {
       }
 
       try {
-        const res = await fetch(`https://barkbacks-backend-1.onrender.com/api/stats/${creatorId}`);
+        const res = await fetch(`https://barkbacks-api.onrender.com/api/stats/${creatorId}`);
         if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
         console.log('Stats response:', data);

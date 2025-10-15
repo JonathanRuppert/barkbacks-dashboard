@@ -5,7 +5,7 @@ export async function fetchImage(prompt) {
   console.log('Sending POST to backend with prompt:', prompt);
 
   try {
-    const response = await fetch('https://barkbacks-backend.onrender.com/api/image', {
+    const response = await fetch('https://barkbacks-api.onrender.com/api/image', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

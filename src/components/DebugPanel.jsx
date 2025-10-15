@@ -9,7 +9,7 @@ const DebugPanel = () => {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await fetch('https://barkbacks-backend-1.onrender.com/api/test-db');
+        const res = await fetch('https://barkbacks-api.onrender.com/api/test-db');
         const data = await res.json();
         setStatus(data.message);
       } catch (err) {

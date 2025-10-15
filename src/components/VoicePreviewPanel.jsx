@@ -11,7 +11,7 @@ const VoicePreviewPanel = ({ creatorId, petId }) => {
   useEffect(() => {
     const fetchStories = async () => {
       try {
-        const res = await fetch(`https://barkbacks-backend-1.onrender.com/api/stories?creatorId=${creatorId}&petId=${petId}`);
+        const res = await fetch(`https://barkbacks-api.onrender.com/api/stories?creatorId=${creatorId}&petId=${petId}`);
         const data = await res.json();
         setStories(data);
       } catch (err) {

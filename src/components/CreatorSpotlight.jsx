@@ -9,7 +9,7 @@ const CreatorSpotlight = () => {
   useEffect(() => {
     const fetchSpotlight = async () => {
       try {
-        const res = await fetch('https://barkbacks-backend-1.onrender.com/api/stories');
+        const res = await fetch('https://barkbacks-api.onrender.com/api/stories');
         const allStories = await res.json();
 
         const creatorMap = {};

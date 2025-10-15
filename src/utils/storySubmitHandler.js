@@ -4,7 +4,7 @@ export async function submitStory({ prompt, image, animation }) {
   console.log('Submitting to backend with:', { prompt, image, animation });
 
   try {
-    const response = await fetch('https://barkbacks-backend.onrender.com/api/submit', {
+    const response = await fetch('https://barkbacks-api.onrender.com/api/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

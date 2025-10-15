@@ -11,7 +11,7 @@ const RemixLineagePanel = ({ storyId }) => {
 
     const fetchLineage = async () => {
       try {
-        const res = await fetch(`https://barkbacks-backend-1.onrender.com/api/remix-lineage/${storyId}`);
+        const res = await fetch(`https://barkbacks-api.onrender.com/api/remix-lineage/${storyId}`);
         const data = await res.json();
         setLineage(data.lineage || []);
       } catch (err) {

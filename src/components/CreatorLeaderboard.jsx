@@ -8,7 +8,7 @@ const CreatorLeaderboard = () => {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const res = await fetch('https://barkbacks-backend-1.onrender.com/api/leaderboard');
+        const res = await fetch('https://barkbacks-api.onrender.com/api/leaderboard');
         const data = await res.json();
         setCreators(data.creators || []);
       } catch (err) {

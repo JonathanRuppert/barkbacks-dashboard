@@ -4,7 +4,7 @@ export async function fetchAnimation(prompt) {
   console.log('Sending POST to backend with prompt:', prompt);
 
   try {
-    const response = await fetch('https://barkbacks-backend.onrender.com/api/animate', {
+    const response = await fetch('https://barkbacks-api.onrender.com/api/animate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

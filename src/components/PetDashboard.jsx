@@ -13,7 +13,7 @@ const PetDashboard = ({ petId }) => {
 
     const fetchStories = async () => {
       try {
-        const res = await fetch(`https://barkbacks-backend-1.onrender.com/api/pet-stories/${petId}`);
+        const res = await fetch(`https://barkbacks-api.onrender.com/api/pet-stories/${petId}`);
         const data = await res.json();
         setStories(data);
       } catch (err) {

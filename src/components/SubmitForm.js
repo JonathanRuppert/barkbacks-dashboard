@@ -10,7 +10,7 @@ const SubmitForm = () => {
 
   const handleSubmit = async () => {
     try {
-      const res = await fetch('https://barkbacks-backend.onrender.com/api/submit', {
+      const res = await fetch('https://barkbacks-api.onrender.com/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(storyData),
