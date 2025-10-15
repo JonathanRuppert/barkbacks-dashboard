@@ -1,47 +1,42 @@
 import React, { useEffect, useState } from 'react';
-
-const API_BASE = 'https://barkbacks-api.onrender.com';
+import { API_BASE } from './config';
 
 function App() {
   const [stories, setStories] = useState([]);
-  const [testMessage, setTestMessage] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    // ✅ CORS test (optional)
-    fetch(`${API_BASE}/api/test`)
-      .then(res => res.json())
-      .then(data => {
-        console.log('✅ CORS test success:', data);
-        setTestMessage(data.message);
-      })
-      .catch(err => {
-        console.error('❌ CORS test failed:', err);
-        setTestMessage('CORS test failed');
-      });
-
-    // 🔁 Fetch stories
     fetch(`${API_BASE}/api/stories`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch stories');
+        return res.json();
+      })
       .then(data => {
-        console.log('✅ Stories fetched:', data);
         setStories(data);
+        setLoading(false);
       })
       .catch(err => {
         console.error('❌ Error fetching stories:', err);
+        setError('Could not load stories');
+        setLoading(false);
       });
   }, []);
 
   return (
-    <div>
+    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>BarkBacks Dashboard</h1>
-      <p>{testMessage}</p>
-      <ul>
-        {stories.map((story, index) => (
-          <li key={index}>
-            <strong>{story.emotion}</strong>: {story.text}
-          </li>
-        ))}
-      </ul>
+      {loading && <p>Loading stories...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {!loading && !error && (
+        <ul>
+          {stories.map((story, index) => (
+            <li key={index}>
+              <strong>{story.emotion}</strong>: {story.text}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
