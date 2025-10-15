@@ -1,63 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import StoryGallery from './components/StoryGallery';
-import BadgeDisplay from './components/BadgeDisplay';
 
 function App() {
   const [stories, setStories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const creatorId = 'your-creator-id'; // Replace with dynamic logic if needed
+  const [testMessage, setTestMessage] = useState('');
 
   useEffect(() => {
-    const fetchStories = async () => {
-      try {
-        const response = await fetch('https://barkbacks-api.onrender.com/api/stories');
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
+    // ✅ CORS test fetch
+    fetch('https://barkbacks-api.onrender.com/api/test')
+      .then(res => res.json())
+      .then(data => {
+        console.log('✅ CORS test success:', data);
+        setTestMessage(data.message);
+      })
+      .catch(err => {
+        console.error('❌ CORS test failed:', err);
+        setTestMessage('CORS test failed');
+      });
 
-        if (Array.isArray(data)) {
-          setStories(data);
-        } else {
-          throw new Error('Invalid response format');
-        }
-      } catch (err) {
-        console.error('Error fetching stories:', err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchStories();
+    // 🔁 Your original fetch logic
+    fetch('https://barkbacks-api.onrender.com/api/stories')
+      .then(res => res.json())
+      .then(data => {
+        console.log('✅ Stories fetched:', data);
+        setStories(data);
+      })
+      .catch(err => {
+        console.error('❌ Error fetching stories:', err);
+      });
   }, []);
 
   return (
-    <Router>
-      <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-        <h1>🐾 BarkBacks Dashboard</h1>
-
-        <nav style={{ marginBottom: '1rem' }}>
-          <Link to="/">Stories</Link> | <Link to="/badges">Badges</Link>
-        </nav>
-
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                {loading && <p>Loading stories...</p>}
-                {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-                {!loading && !error && <StoryGallery stories={stories} />}
-              </>
-            }
-          />
-          <Route path="/badges" element={<BadgeDisplay creatorId={creatorId} />} />
-        </Routes>
-      </div>
-    </Router>
+    <div>
+      <h1>BarkBacks Dashboard</h1>
+      <p>{testMessage}</p>
+      <ul>
+        {stories.map((story, index) => (
+          <li key={index}>
+            <strong>{story.emotion}</strong>: {story.text}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
