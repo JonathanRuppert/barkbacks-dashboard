@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+const API_BASE = 'https://barkbacks-api.onrender.com';
+
 function App() {
   const [stories, setStories] = useState([]);
   const [testMessage, setTestMessage] = useState('');
 
   useEffect(() => {
-    // ✅ CORS test fetch
-    fetch('https://barkbacks-api.onrender.com/api/test')
+    // ✅ CORS test (optional)
+    fetch(`${API_BASE}/api/test`)
       .then(res => res.json())
       .then(data => {
         console.log('✅ CORS test success:', data);
@@ -17,8 +19,8 @@ function App() {
         setTestMessage('CORS test failed');
       });
 
-    // 🔁 Your original fetch logic
-    fetch('https://barkbacks-api.onrender.com/api/stories')
+    // 🔁 Fetch stories
+    fetch(`${API_BASE}/api/stories`)
       .then(res => res.json())
       .then(data => {
         console.log('✅ Stories fetched:', data);
