@@ -39,7 +39,7 @@ function App() {
         <ul>
           {stories.map((story, index) => (
             <li key={index}>
-              <strong>{story.emotion}</strong>: {story.text || <em>(no text)</em>}
+              <strong>{story.emotion}</strong>: {story.text?.trim() || <em>(no text provided)</em>}
             </li>
           ))}
         </ul>
