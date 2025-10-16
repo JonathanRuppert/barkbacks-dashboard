@@ -5,6 +5,7 @@ import './StoryForm.css';
 const StoryForm = () => {
   const [emotion, setEmotion] = useState('');
   const [creatorId, setCreatorId] = useState('');
+  const [petName, setPetName] = useState('');
   const [storyText, setStoryText] = useState('');
   const [remixOf, setRemixOf] = useState('');
   const [status, setStatus] = useState('');
@@ -20,6 +21,7 @@ const StoryForm = () => {
         creatorId,
         text: storyText,
         emotion,
+        petName,
       };
 
       if (remixOf.trim() !== '') {
@@ -34,6 +36,7 @@ const StoryForm = () => {
         setStatus('✅ Story submitted successfully!');
         setEmotion('');
         setCreatorId('');
+        setPetName('');
         setStoryText('');
         setRemixOf('');
       } else {
@@ -66,6 +69,14 @@ const StoryForm = () => {
           onChange={(e) => setCreatorId(e.target.value)}
           placeholder="e.g., jonathan"
           required
+        />
+
+        <label>Pet Name:</label>
+        <input
+          type="text"
+          value={petName}
+          onChange={(e) => setPetName(e.target.value)}
+          placeholder="e.g., Toby"
         />
 
         <label>Story:</label>
