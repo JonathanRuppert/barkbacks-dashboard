@@ -4,31 +4,43 @@ import './StoryForm.css';
 
 const StoryForm = () => {
   const [emotion, setEmotion] = useState('');
-  const [petName, setPetName] = useState('');
+  const [creatorId, setCreatorId] = useState('');
   const [storyText, setStoryText] = useState('');
+  const [remixOf, setRemixOf] = useState('');
   const [status, setStatus] = useState('');
+
+  const BASE_URL = 'https://barkbacks-api.onrender.com/api/stories';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('Submitting...');
 
     try {
-      const response = await axios.post('/api/stories', {
+      const payload = {
+        creatorId,
+        text: storyText,
         emotion,
-        petName,
-        storyText,
+      };
+
+      if (remixOf.trim() !== '') {
+        payload.remixOf = remixOf;
+      }
+
+      const response = await axios.post(BASE_URL, payload, {
+        headers: { 'Content-Type': 'application/json' },
       });
 
       if (response.status === 200) {
         setStatus('✅ Story submitted successfully!');
         setEmotion('');
-        setPetName('');
+        setCreatorId('');
         setStoryText('');
+        setRemixOf('');
       } else {
         setStatus('❌ Submission failed. Try again.');
       }
     } catch (error) {
-      console.error(error);
+      console.error('Error submitting story:', error);
       setStatus('❌ Error submitting story.');
     }
   };
@@ -47,12 +59,12 @@ const StoryForm = () => {
           <option value="Excitement">Excitement</option>
         </select>
 
-        <label>Pet Name:</label>
+        <label>Creator ID:</label>
         <input
           type="text"
-          value={petName}
-          onChange={(e) => setPetName(e.target.value)}
-          placeholder="e.g., Luna"
+          value={creatorId}
+          onChange={(e) => setCreatorId(e.target.value)}
+          placeholder="e.g., jonathan"
           required
         />
 
@@ -63,6 +75,14 @@ const StoryForm = () => {
           placeholder="Write your story here..."
           rows="5"
           required
+        />
+
+        <label>Remix Of (optional):</label>
+        <input
+          type="text"
+          value={remixOf}
+          onChange={(e) => setRemixOf(e.target.value)}
+          placeholder="Paste original story ID if remixing"
         />
 
         <button type="submit">Submit Story</button>
