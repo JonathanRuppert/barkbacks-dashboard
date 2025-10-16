@@ -1,0 +1,55 @@
+.pet-dashboard {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.pet-dashboard h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.pet-dashboard form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pet-dashboard input {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.pet-dashboard button {
+  padding: 0.75rem 1rem;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pet-dashboard button:hover {
+  background-color: #444;
+}
+
+.status {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.pet-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pet-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
