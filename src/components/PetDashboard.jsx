@@ -7,21 +7,24 @@ const PetDashboard = () => {
   const [newPet, setNewPet] = useState('');
   const [status, setStatus] = useState('');
 
+  // ✅ Correct backend URL
+  const BASE_URL = 'https://barkbacks-api.onrender.com/api/pets';
+
   useEffect(() => {
     fetchPets();
   }, []);
 
   const fetchPets = async () => {
     try {
-      const response = await axios.get('/api/pets');
+      const response = await axios.get(BASE_URL);
       const data = response.data;
 
-      // Adjust if backend returns { pets: [...] }
       const petArray = Array.isArray(data) ? data : data.pets || [];
       setPets(petArray);
       console.log('Fetched pets:', petArray);
     } catch (error) {
       console.error('Error fetching pets:', error);
+      setStatus('❌ Failed to fetch pets.');
     }
   };
 
@@ -30,7 +33,10 @@ const PetDashboard = () => {
     setStatus('Adding pet...');
 
     try {
-      const response = await axios.post('/api/pets', { name: newPet });
+      const response = await axios.post(BASE_URL, { name: newPet }, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+
       if (response.status === 200) {
         setStatus('✅ Pet added!');
         setNewPet('');
@@ -39,7 +45,7 @@ const PetDashboard = () => {
         setStatus('❌ Failed to add pet.');
       }
     } catch (error) {
-      console.error(error);
+      console.error('Error adding pet:', error);
       setStatus('❌ Error adding pet.');
     }
   };
@@ -59,10 +65,10 @@ const PetDashboard = () => {
       </form>
       <p className="status">{status}</p>
       <ul className="pet-list">
-        {Array.isArray(pets) ? (
+        {Array.isArray(pets) && pets.length > 0 ? (
           pets.map((pet, index) => <li key={index}>{pet.name}</li>)
         ) : (
-          <li>No pets found or invalid data format</li>
+          <li>No pets found</li>
         )}
       </ul>
     </div>
