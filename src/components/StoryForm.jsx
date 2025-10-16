@@ -1,10 +1,10 @@
-// StoryForm.jsx — BarkBack submission form
-
 import React, { useState } from 'react';
+import axios from 'axios';
+import './StoryForm.css';
 
 const StoryForm = () => {
-  const [petName, setPetName] = useState('');
   const [emotion, setEmotion] = useState('');
+  const [petName, setPetName] = useState('');
   const [storyText, setStoryText] = useState('');
   const [status, setStatus] = useState('');
 
@@ -13,53 +13,63 @@ const StoryForm = () => {
     setStatus('Submitting...');
 
     try {
-      const res = await fetch('https://barkbacks-api.onrender.com/api/create-story', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ petName, emotion, storyText }),
+      const response = await axios.post('/api/stories', {
+        emotion,
+        petName,
+        storyText,
       });
 
-      const data = await res.json();
-      setStatus(data.message || 'Story submitted!');
-      setPetName('');
-      setEmotion('');
-      setStoryText('');
-    } catch (err) {
-      setStatus('Error: ' + err.message);
+      if (response.status === 200) {
+        setStatus('✅ Story submitted successfully!');
+        setEmotion('');
+        setPetName('');
+        setStoryText('');
+      } else {
+        setStatus('❌ Submission failed. Try again.');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('❌ Error submitting story.');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={styles.form}>
-      <h3>📖 Submit a BarkBack</h3>
+    <div className="story-form-container">
+      <h2>Submit Your Emotional Story</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Emotion Tag:</label>
+        <select value={emotion} onChange={(e) => setEmotion(e.target.value)} required>
+          <option value="">Select Emotion</option>
+          <option value="Joy">Joy</option>
+          <option value="Gratitude">Gratitude</option>
+          <option value="Nostalgia">Nostalgia</option>
+          <option value="Sadness">Sadness</option>
+          <option value="Excitement">Excitement</option>
+        </select>
 
-      <label>Pet Name:</label>
-      <input value={petName} onChange={(e) => setPetName(e.target.value)} required />
+        <label>Pet Name:</label>
+        <input
+          type="text"
+          value={petName}
+          onChange={(e) => setPetName(e.target.value)}
+          placeholder="e.g., Luna"
+          required
+        />
 
-      <label>Emotion Tag:</label>
-      <input value={emotion} onChange={(e) => setEmotion(e.target.value)} required />
+        <label>Story:</label>
+        <textarea
+          value={storyText}
+          onChange={(e) => setStoryText(e.target.value)}
+          placeholder="Write your story here..."
+          rows="5"
+          required
+        />
 
-      <label>Story Text:</label>
-      <textarea value={storyText} onChange={(e) => setStoryText(e.target.value)} required />
-
-      <button type="submit">Submit Story</button>
-      <p>{status}</p>
-    </form>
+        <button type="submit">Submit Story</button>
+      </form>
+      <p className="status-message">{status}</p>
+    </div>
   );
-};
-
-const styles = {
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0.75rem',
-    maxWidth: '500px',
-    margin: '2rem auto',
-    padding: '1rem',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    background: '#fefefe',
-  },
 };
 
 export default StoryForm;

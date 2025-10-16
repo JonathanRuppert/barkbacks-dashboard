@@ -1,51 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { API_BASE } from './config';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import StoryGallery from './components/StoryGallery';
+import StoryForm from './components/StoryForm';
+import PetDashboard from './components/PetDashboard';
+import CreatorGallery from './components/CreatorGallery';
+import EmotionRemixGraph from './components/EmotionRemixGraph';
 
-function App() {
-  const [stories, setStories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    fetch(`${API_BASE}/api/stories`)
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch stories');
-        return res.json();
-      })
-      .then(data => {
-        console.log('✅ Stories fetched:', data);
-        setStories(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('❌ Error fetching stories:', err);
-        setError('Could not load stories');
-        setLoading(false);
-      });
-  }, []);
-
+const App = () => {
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>BarkBacks Dashboard</h1>
-
-      {loading && <p>Loading stories...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      {!loading && !error && stories.length === 0 && (
-        <p>No stories found.</p>
-      )}
-
-      {!loading && !error && stories.length > 0 && (
-        <ul>
-          {stories.map((story, index) => (
-            <li key={index}>
-              <strong>{story.emotion}</strong>: {story.text?.trim() || <em>(no text provided)</em>}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<StoryGallery />} />
+        <Route path="/submit" element={<StoryForm />} />
+        <Route path="/pets" element={<PetDashboard />} />
+        <Route path="/creators" element={<CreatorGallery />} />
+        <Route path="/analytics" element={<EmotionRemixGraph />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
