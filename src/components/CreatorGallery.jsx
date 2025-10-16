@@ -8,7 +8,6 @@ const CreatorGallery = () => {
   const [badges, setBadges] = useState([]);
   const [status, setStatus] = useState('');
 
-  // ✅ Replace with your actual backend URL
   const BASE_URL = 'https://barkbacks-api.onrender.com';
 
   useEffect(() => {
@@ -55,7 +54,7 @@ const CreatorGallery = () => {
 
   return (
     <div className="creator-gallery">
-      <h2>Creator Gallery</h2>
+      <h2>✨ BarkBacks Creator Gallery</h2>
       <p>Select a creator to view their emotional badge chains:</p>
       <ul className="creator-list">
         {creators.map((creator) => (
@@ -63,6 +62,17 @@ const CreatorGallery = () => {
             <button onClick={() => fetchBadges(creator.creatorId)}>
               {creator.creatorId}
             </button>
+
+            {/* 🧠 Show story previews */}
+            <ul className="story-chain">
+              {creator.stories.map((story, index) => (
+                <li key={index} className="story-preview">
+                  <p>“{story.text || 'No content'}”</p>
+                  <p><em>Emotion: {story.emotion}</em></p>
+                  <span>🔄 Remix</span>
+                </li>
+              ))}
+            </ul>
           </li>
         ))}
       </ul>
