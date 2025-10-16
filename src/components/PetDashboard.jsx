@@ -14,7 +14,12 @@ const PetDashboard = () => {
   const fetchPets = async () => {
     try {
       const response = await axios.get('/api/pets');
-      setPets(response.data);
+      const data = response.data;
+
+      // Adjust if backend returns { pets: [...] }
+      const petArray = Array.isArray(data) ? data : data.pets || [];
+      setPets(petArray);
+      console.log('Fetched pets:', petArray);
     } catch (error) {
       console.error('Error fetching pets:', error);
     }
@@ -54,9 +59,11 @@ const PetDashboard = () => {
       </form>
       <p className="status">{status}</p>
       <ul className="pet-list">
-        {pets.map((pet, index) => (
-          <li key={index}>{pet.name}</li>
-        ))}
+        {Array.isArray(pets) ? (
+          pets.map((pet, index) => <li key={index}>{pet.name}</li>)
+        ) : (
+          <li>No pets found or invalid data format</li>
+        )}
       </ul>
     </div>
   );
