@@ -8,6 +8,7 @@ import FusionVisualizer from './FusionVisualizer';
 import ChronoPulseVisualizer from './ChronoPulseVisualizer';
 import AuroraVisualizer from './AuroraVisualizer';
 
+
 const Dashboard = () => {
   const creatorId = 'jonathan';
 
