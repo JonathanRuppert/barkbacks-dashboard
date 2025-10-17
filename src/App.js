@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/pets" element={<PetDashboard />} />
         <Route path="/creators" element={<CreatorGallery />} />
         <Route path="/analytics" element={<EmotionRemixGraph />} />
-        <Route path="/dashboard" element={<Dashboard />} /> {/* ✅ Add this route */}
+        <Route path="/" element={<Dashboard />} /> {/* ✅ Add this route */}
       </Routes>
     </Router>
   );
