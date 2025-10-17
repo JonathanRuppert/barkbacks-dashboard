@@ -1,10 +1,12 @@
 import React from 'react';
+import React from 'react';
 import EchoDepthVisualizer from './EchoDepthVisualizer';
 import PulseSyncVisualizer from './PulseSyncVisualizer';
 import CascadeVisualizer from './CascadeVisualizer';
 import OrbitTrailVisualizer from './OrbitTrailVisualizer';
 import NovaVisualizer from './NovaVisualizer';
 import FusionVisualizer from './FusionVisualizer';
+import ChronoPulseVisualizer from './ChronoPulseVisualizer';
 
 const Dashboard = () => {
   const creatorId = 'jonathan'; // You can make this dynamic later
@@ -36,8 +38,12 @@ const Dashboard = () => {
         <NovaVisualizer />
       </section>
 
-      <section>
+      <section style={{ marginBottom: '3rem' }}>
         <FusionVisualizer />
+      </section>
+
+      <section>
+        <ChronoPulseVisualizer />
       </section>
     </main>
   );
