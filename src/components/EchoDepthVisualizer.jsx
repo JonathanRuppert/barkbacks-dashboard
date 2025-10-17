@@ -1,37 +1,30 @@
 import React, { useEffect, useState } from 'react';
 
 const EchoDepthVisualizer = ({ creatorId }) => {
-  const [chains, setChains] = useState([]);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    const fetchChains = async () => {
-      try {
-        const res = await fetch(`/api/echodepth/${creatorId}`);
-        const data = await res.json();
-        setChains(data.chains || []);
-      } catch (err) {
-        console.error('Failed to fetch EchoDepth chains:', err);
-      }
-    };
-    fetchChains();
+    console.log('Fetching EchoDepth...');
+    fetch('https://barkbacks-api.onrender.com/api/echodepth/' + creatorId)
+      .then(res => res.json())
+      .then(json => {
+        console.log('EchoDepth data:', json);
+        setData(json);
+      })
+      .catch(err => {
+        console.error('EchoDepth fetch error:', err);
+      });
   }, [creatorId]);
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>EchoDepth Remix Chains</h2>
-      {chains.length === 0 ? (
-        <p>No remix chains found for {creatorId}.</p>
+    <div style={{ padding: '1rem', background: '#fff', border: '1px solid #ccc' }}>
+      <h3>EchoDepth Debug</h3>
+      {data ? (
+        <pre style={{ fontSize: '0.8rem', overflowX: 'auto' }}>
+          {JSON.stringify(data, null, 2)}
+        </pre>
       ) : (
-        chains.map((chain, index) => (
-          <div key={index} style={{ marginBottom: '2rem', borderLeft: '4px solid #ccc', paddingLeft: '1rem' }}>
-            <h4>Chain Depth: {chain.depth}</h4>
-            {chain.texts.map((text, i) => (
-              <div key={i} style={{ marginBottom: '0.5rem' }}>
-                <strong style={{ color: '#555' }}>{chain.emotions[i]}</strong>: {text}
-              </div>
-            ))}
-          </div>
-        ))
+        <p>Loading or no data...</p>
       )}
     </div>
   );
