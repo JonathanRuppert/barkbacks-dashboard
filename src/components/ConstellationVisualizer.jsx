@@ -8,7 +8,7 @@ const ConstellationVisualizer = ({ creatorId }) => {
   useEffect(() => {
     const fetchConstellation = async () => {
       try {
-        const res = await axios.get(`http://localhost:10000/api/remix-constellation/${creatorId}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE}/api/remix-constellation/${creatorId}`);
         setConnections(res.data.connections || []);
       } catch (err) {
         setError('Failed to load remix constellation.');
