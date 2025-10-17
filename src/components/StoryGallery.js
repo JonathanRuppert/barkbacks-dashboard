@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+const emotionColors = {
+  Joy: '#FFD700',        // Gold
+  Gratitude: '#90EE90',  // Light green
+  Love: '#FFB6C1',       // Light pink
+  Sad: '#87CEFA',        // Light blue
+  Anger: '#FF6347',      // Tomato
+  Fear: '#D3D3D3',       // Light gray
+};
+
 const StoryGallery = () => {
   const [groupedStories, setGroupedStories] = useState({});
 
@@ -49,9 +58,33 @@ const StoryGallery = () => {
                 border: '1px solid #ccc',
                 borderRadius: '6px',
                 backgroundColor: '#fff',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'scale(1.02)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
               }}
             >
-              <strong>{story.emotion}</strong>: {story.text}
+              <span
+                style={{
+                  display: 'inline-block',
+                  padding: '0.25rem 0.5rem',
+                  borderRadius: '4px',
+                  backgroundColor: emotionColors[story.emotion] || '#eee',
+                  color: '#333',
+                  fontWeight: 'bold',
+                  marginBottom: '0.5rem',
+                }}
+              >
+                {story.emotion}
+              </span>
+              <p>{story.text}</p>
             </div>
           ))}
         </div>
