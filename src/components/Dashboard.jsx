@@ -1,5 +1,5 @@
 import React from 'react';
-import EchoDepth from './EchoDepth';
+import EchoDepth from './EchoDepthVisualizer';
 import PulseSync from './PulseSync';
 import Cascade from './Cascade';
 import OrbitTrail from './OrbitTrail';
