@@ -2,6 +2,7 @@ import React from 'react';
 import EchoDepthVisualizer from './EchoDepthVisualizer';
 import PulseSyncVisualizer from './PulseSyncVisualizer';
 import CascadeVisualizer from './CascadeVisualizer';
+import OrbitTrailVisualizer from './OrbitTrailVisualizer';
 
 const Dashboard = () => {
   const creatorId = 'jonathan'; // You can make this dynamic later
@@ -21,8 +22,12 @@ const Dashboard = () => {
         <PulseSyncVisualizer />
       </section>
 
-      <section>
+      <section style={{ marginBottom: '3rem' }}>
         <CascadeVisualizer />
+      </section>
+
+      <section>
+        <OrbitTrailVisualizer emotion="Joy" />
       </section>
     </main>
   );
