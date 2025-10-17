@@ -4,6 +4,7 @@ import PulseSyncVisualizer from './PulseSyncVisualizer';
 import CascadeVisualizer from './CascadeVisualizer';
 import OrbitTrailVisualizer from './OrbitTrailVisualizer';
 import NovaVisualizer from './NovaVisualizer';
+import FusionVisualizer from './FusionVisualizer';
 
 const Dashboard = () => {
   const creatorId = 'jonathan'; // You can make this dynamic later
@@ -31,8 +32,12 @@ const Dashboard = () => {
         <OrbitTrailVisualizer emotion="Joy" />
       </section>
 
-      <section>
+      <section style={{ marginBottom: '3rem' }}>
         <NovaVisualizer />
+      </section>
+
+      <section>
+        <FusionVisualizer />
       </section>
     </main>
   );
