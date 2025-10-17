@@ -1,6 +1,7 @@
 import React from 'react';
 import EchoDepthVisualizer from './EchoDepthVisualizer';
 import PulseSyncVisualizer from './PulseSyncVisualizer';
+import CascadeVisualizer from './CascadeVisualizer';
 
 const Dashboard = () => {
   const creatorId = 'jonathan'; // You can make this dynamic later
@@ -12,8 +13,17 @@ const Dashboard = () => {
         Explore your emotional remix chains and storytelling rhythms.
       </p>
 
-      <EchoDepthVisualizer creatorId={creatorId} />
-      <PulseSyncVisualizer />
+      <section style={{ marginBottom: '3rem' }}>
+        <EchoDepthVisualizer creatorId={creatorId} />
+      </section>
+
+      <section style={{ marginBottom: '3rem' }}>
+        <PulseSyncVisualizer />
+      </section>
+
+      <section>
+        <CascadeVisualizer />
+      </section>
     </main>
   );
 };
