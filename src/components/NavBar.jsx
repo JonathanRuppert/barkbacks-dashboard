@@ -1,18 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css';
 
 const NavBar = () => {
   return (
-    <nav className="navbar">
-      <h1>BarkBacks Dashboard</h1>
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/submit">Submit Story</Link></li>
-        <li><Link to="/pets">Pets</Link></li>
-        <li><Link to="/creators">Creators</Link></li>
-        <li><Link to="/analytics">Analytics</Link></li>
-      </ul>
+    <nav style={{ padding: '1rem', backgroundColor: '#eee', display: 'flex', gap: '1rem' }}>
+      <Link to="/">Home</Link>
+      <Link to="/submit">Submit Story</Link>
+      <Link to="/pets">Pets</Link>
+      <Link to="/creators">Creators</Link>
+      <Link to="/analytics">Analytics</Link>
+      <Link to="/dashboard">Dashboard</Link> {/* ✅ New link added */}
     </nav>
   );
 };
