@@ -6,6 +6,7 @@ import StoryForm from './components/StoryForm';
 import PetDashboard from './components/PetDashboard';
 import CreatorGallery from './components/CreatorGallery';
 import EmotionRemixGraph from './components/EmotionRemixGraph';
+import Dashboard from './components/Dashboard'; // ✅ Add this line
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/pets" element={<PetDashboard />} />
         <Route path="/creators" element={<CreatorGallery />} />
         <Route path="/analytics" element={<EmotionRemixGraph />} />
+        <Route path="/dashboard" element={<Dashboard />} /> {/* ✅ Add this route */}
       </Routes>
     </Router>
   );
