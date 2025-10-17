@@ -1,12 +1,12 @@
 import React from 'react';
 import EchoDepth from './EchoDepthVisualizer';
-import PulseSync from './PulseSync';
-import Cascade from './Cascade';
-import OrbitTrail from './OrbitTrail';
-import Nova from './Nova';
-import Fusion from './Fusion';
-import ChronoPulse from './ChronoPulse';
-import Aurora from './Aurora';
+import PulseSync from './PulseSyncVisualizer';
+import Cascade from './CascadeVisualizer';
+import OrbitTrail from './OrbitTrailVisualizer';
+import Nova from './NovaVisualizer';
+import Fusion from './FusionVisualizer';
+import ChronoPulse from './ChronoPulseVisualizer';
+import Aurora from './AuroraVisualizer';
 import ConstellationVisualizer from './ConstellationVisualizer';
 
 const Dashboard = () => {
