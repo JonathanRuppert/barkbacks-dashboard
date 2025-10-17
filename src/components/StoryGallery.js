@@ -18,12 +18,12 @@ const StoryGallery = () => {
   }, []);
 
   return (
-    <div className="story-gallery">
+    <div className="story-gallery" style={{ padding: '2rem' }}>
+      <h2>🐾 BarkBacks Story Gallery</h2>
       {stories.map(story => (
-        <div key={story._id} className="story-card">
+        <div key={story._id} className="story-card" style={{ marginBottom: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '8px' }}>
           <h3>{story.petName}</h3>
-          <p>{story.storyText}</p>
-          <span>{story.emotion}</span>
+          <p><strong>{story.emotion}</strong>: {story.text}</p>
         </div>
       ))}
     </div>
