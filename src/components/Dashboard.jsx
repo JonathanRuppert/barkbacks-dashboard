@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { WebSocketContext } from '../context/WebSocketContext';
 import EchoDepth from './EchoDepthVisualizer';
 import PulseSync from './PulseSyncVisualizer';
 import Cascade from './CascadeVisualizer';
@@ -10,11 +11,39 @@ import Aurora from './AuroraVisualizer';
 import ConstellationVisualizer from './ConstellationVisualizer';
 
 const Dashboard = () => {
+  const socket = useContext(WebSocketContext);
+  const [liveEmotions, setLiveEmotions] = useState([]);
+
+  useEffect(() => {
+    if (!socket) return;
+
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.type === 'new_story') {
+        setLiveEmotions(prev => [data, ...prev]);
+      }
+    };
+  }, [socket]);
+
   return (
     <main style={{ fontFamily: 'sans-serif', padding: '2rem', backgroundColor: '#f9f9f9' }}>
       <h1 style={{ color: 'red', fontSize: '2.5rem', marginBottom: '2rem' }}>
         🚨 DASHBOARD IS RENDERING 🚨
       </h1>
+
+      <section style={{ marginBottom: '3rem' }}>
+        <h2>📡 Live Emotional Pulse</h2>
+        {liveEmotions.length === 0 ? (
+          <p>No emotional events yet...</p>
+        ) : (
+          liveEmotions.map((e, i) => (
+            <div key={i} style={{ marginBottom: '0.5rem' }}>
+              <strong>{e.petName}</strong> felt <em>{e.emotion}</em> at{' '}
+              {new Date(e.timestamp).toLocaleTimeString()} by <code>{e.creatorId}</code>
+            </div>
+          ))
+        )}
+      </section>
 
       <section style={{ marginBottom: '3rem' }}>
         <h2>🔬 EchoDepth</h2>
