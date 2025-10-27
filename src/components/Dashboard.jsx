@@ -11,6 +11,7 @@ import Aurora from './AuroraVisualizer';
 import ConstellationVisualizer from './ConstellationVisualizer';
 import RemixLineage from './RemixLineage';
 import PetArc from './PetArc';
+import EmotionDiversity from './EmotionDiversity';
 
 const Dashboard = () => {
   const socket = useContext(WebSocketContext);
@@ -95,6 +96,11 @@ const Dashboard = () => {
      <section style={{ marginBottom: '3rem' }}>
        <h2>🐾 Pet Emotional Arcs</h2>
        <PetArc />
+      </section>
+
+     <section style={{ marginBottom: '3rem', borderTop: '1px solid #ccc', paddingTop: '2rem' }}>
+       <h2>📊 Emotional Analytics</h2>
+       <EmotionDiversity />
       </section>
 
       <section style={{ marginBottom: '3rem' }}>
