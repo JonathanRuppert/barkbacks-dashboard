@@ -10,6 +10,7 @@ import ChronoPulse from './ChronoPulseVisualizer';
 import Aurora from './AuroraVisualizer';
 import ConstellationVisualizer from './ConstellationVisualizer';
 import RemixLineage from './RemixLineage';
+import PetArc from './PetArc';
 
 const Dashboard = () => {
   const socket = useContext(WebSocketContext);
@@ -89,6 +90,11 @@ const Dashboard = () => {
       <section style={{ marginBottom: '3rem' }}>
         <h2>🧬 Remix Lineage</h2>
         <RemixLineage />
+      </section>
+
+     <section style={{ marginBottom: '3rem' }}>
+       <h2>🐾 Pet Emotional Arcs</h2>
+       <PetArc />
       </section>
 
       <section style={{ marginBottom: '3rem' }}>
