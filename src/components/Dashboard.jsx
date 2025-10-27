@@ -9,6 +9,7 @@ import Fusion from './FusionVisualizer';
 import ChronoPulse from './ChronoPulseVisualizer';
 import Aurora from './AuroraVisualizer';
 import ConstellationVisualizer from './ConstellationVisualizer';
+import RemixLineage from './RemixLineage';
 
 const Dashboard = () => {
   const socket = useContext(WebSocketContext);
@@ -83,6 +84,11 @@ const Dashboard = () => {
       <section style={{ marginBottom: '3rem' }}>
         <h2>🌈 Aurora</h2>
         <Aurora creatorId="jonathan" />
+      </section>
+
+      <section style={{ marginBottom: '3rem' }}>
+        <h2>🧬 Remix Lineage</h2>
+        <RemixLineage />
       </section>
 
       <section style={{ marginBottom: '3rem' }}>
