@@ -21,13 +21,17 @@ const PetArc = () => {
         arcs.map((pet, i) => (
           <div key={i} style={{ marginBottom: '1.5rem' }}>
             <strong>{pet.petName}</strong>
-            <ul>
-              {pet.emotionalTimeline.map((entry, j) => (
-                <li key={j}>
-                  {entry.emotion} at {new Date(entry.timestamp).toLocaleTimeString()}
-                </li>
-              ))}
-            </ul>
+            {Array.isArray(pet.emotionalTimeline) ? (
+              <ul>
+                {pet.emotionalTimeline.map((entry, j) => (
+                  <li key={j}>
+                    {entry.emotion} at {new Date(entry.timestamp).toLocaleTimeString()}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No emotional timeline available.</p>
+            )}
           </div>
         ))
       )}
