@@ -5,7 +5,7 @@ import PulseSync from './PulseSyncVisualizer';
 import Cascade from './CascadeVisualizer';
 import OrbitTrail from './OrbitTrail';
 import Nova from './NovaVisualizer';
-import Fusion from './FusionVisualizer';
+import Fusion from './Fusion';
 import ChronoPulse from './ChronoPulseVisualizer';
 import Aurora from './AuroraVisualizer';
 import ConstellationVisualizer from './ConstellationVisualizer';
@@ -77,7 +77,7 @@ const Dashboard = () => {
 
       <section style={{ marginBottom: '3rem' }}>
         <h2>💥 Fusion</h2>
-        <Fusion creatorId="jonathan" />
+        <Fusion />
       </section>
 
       <section style={{ marginBottom: '3rem' }}>
