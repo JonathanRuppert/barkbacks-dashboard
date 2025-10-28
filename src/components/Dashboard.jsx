@@ -13,8 +13,6 @@ import RemixLineage from './RemixLineage';
 import PetArc from './PetArc';
 import EmotionDiversity from './EmotionDiversity';
 import EmotionRemixTracker from './EmotionRemixTracker';
-import Aurora from './Aurora';
-
 
 
 const Dashboard = () => {
