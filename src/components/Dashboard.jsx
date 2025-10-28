@@ -3,7 +3,7 @@ import { WebSocketContext } from '../context/WebSocketContext';
 import EchoDepthVisualizer from './EchoDepthVisualizer';
 import PulseSync from './PulseSyncVisualizer';
 import Cascade from './CascadeVisualizer';
-import OrbitTrail from './OrbitTrailVisualizer';
+import OrbitTrail from './OrbitTrail';
 import Nova from './NovaVisualizer';
 import Fusion from './FusionVisualizer';
 import ChronoPulse from './ChronoPulseVisualizer';
@@ -66,8 +66,8 @@ const Dashboard = () => {
       </section>
 
       <section style={{ marginBottom: '3rem' }}>
-        <h2>🪐 OrbitTrail (Joy)</h2>
-        <OrbitTrail creatorId="jonathan" emotion="Joy" />
+        <h2>🪐 OrbitTrail</h2>
+        <OrbitTrail />
       </section>
 
       <section style={{ marginBottom: '3rem' }}>
@@ -108,10 +108,6 @@ const Dashboard = () => {
      <section style={{ marginBottom: '3rem' }}>
        <h2>🔁 Emotion Remix Tracker</h2>
        <EmotionRemixTracker />
-      </section>
-
-     <section style={{ marginBottom: '3rem' }}>
-       <Aurora />
       </section>
 
       <section style={{ marginBottom: '3rem' }}>
