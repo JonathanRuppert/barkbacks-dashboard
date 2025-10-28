@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const LipSyncEngine = () => {
+const LipSyncEngine = ({ setSyncData }) => {
   const [transcript, setTranscript] = useState('');
   const [emotion, setEmotion] = useState('happy');
   const [syncData, setSyncData] = useState([]);

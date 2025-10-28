@@ -15,11 +15,12 @@ import EmotionDiversity from './EmotionDiversity';
 import EmotionRemixTracker from './EmotionRemixTracker';
 import EmotionSummary from './EmotionSummary';
 import LipSyncEngine from './LipSyncEngine';
-
+import PetAvatar from './PetAvatar';
 
 const Dashboard = () => {
   const socket = useContext(WebSocketContext);
   const [liveEmotions, setLiveEmotions] = useState([]);
+  const [syncData, setSyncData] = useState([]);
 
   useEffect(() => {
     if (!socket) return;
@@ -97,28 +98,32 @@ const Dashboard = () => {
         <RemixLineage />
       </section>
 
-     <section style={{ marginBottom: '3rem' }}>
-       <h2>🐾 Pet Emotional Arcs</h2>
-       <PetArc />
+      <section style={{ marginBottom: '3rem' }}>
+        <h2>🐾 Pet Emotional Arcs</h2>
+        <PetArc />
       </section>
 
-     <section style={{ marginBottom: '3rem', borderTop: '1px solid #ccc', paddingTop: '2rem' }}>
-       <h2>📊 Emotional Analytics</h2>
-       <EmotionDiversity />
+      <section style={{ marginBottom: '3rem', borderTop: '1px solid #ccc', paddingTop: '2rem' }}>
+        <h2>📊 Emotional Analytics</h2>
+        <EmotionDiversity />
       </section>
 
-     <section style={{ marginBottom: '3rem' }}>
-       <h2>🔁 Emotion Remix Tracker</h2>
-       <EmotionRemixTracker />
+      <section style={{ marginBottom: '3rem' }}>
+        <h2>🔁 Emotion Remix Tracker</h2>
+        <EmotionRemixTracker />
       </section>
 
-     <section style={{ marginBottom: '3rem' }}>
-       <EmotionSummary />
-     </section>
+      <section style={{ marginBottom: '3rem' }}>
+        <EmotionSummary />
+      </section>
 
-     <section style={{ marginBottom: '3rem' }}>
-       <LipSyncEngine />
-     </section>
+      <section style={{ marginBottom: '3rem' }}>
+        <LipSyncEngine setSyncData={setSyncData} />
+      </section>
+
+      <section style={{ marginBottom: '3rem' }}>
+        <PetAvatar syncData={syncData} />
+      </section>
 
       <section style={{ marginBottom: '3rem' }}>
         <h2>🛰️ Constellation</h2>
