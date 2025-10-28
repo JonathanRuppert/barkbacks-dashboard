@@ -14,6 +14,8 @@ import PetArc from './PetArc';
 import EmotionDiversity from './EmotionDiversity';
 import EmotionRemixTracker from './EmotionRemixTracker';
 import EmotionSummary from './EmotionSummary';
+import LipSyncEngine from './LipSyncEngine';
+
 
 const Dashboard = () => {
   const socket = useContext(WebSocketContext);
@@ -112,6 +114,10 @@ const Dashboard = () => {
 
      <section style={{ marginBottom: '3rem' }}>
        <EmotionSummary />
+     </section>
+
+     <section style={{ marginBottom: '3rem' }}>
+       <LipSyncEngine />
      </section>
 
       <section style={{ marginBottom: '3rem' }}>
