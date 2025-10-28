@@ -54,7 +54,7 @@ const Dashboard = () => {
 
       <section style={{ marginBottom: '3rem' }}>
         <h2>🔬 EchoDepthVisualizer</h2>
-        <EchoDepthVisualizer creatorId="jonathan" debug />
+        <EchoDepthVisualizer />
       </section>
 
       <section style={{ marginBottom: '3rem' }}>
