@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import PetAvatar from './PetAvatar';
 
 const LipSyncEngine = ({ setSyncData }) => {
   const [transcript, setTranscript] = useState('');
   const [emotion, setEmotion] = useState('happy');
-  const [syncData, setSyncData] = useState([]);
+  const [localSyncData, setLocalSyncData] = useState([]);
 
   const handleGenerate = async () => {
     const res = await fetch('https://barkbacks-api.onrender.com/api/lipsync-generator', {
@@ -12,7 +13,9 @@ const LipSyncEngine = ({ setSyncData }) => {
       body: JSON.stringify({ transcript, emotion })
     });
     const data = await res.json();
-    setSyncData(data.syncData || []);
+    const sync = data.syncData || [];
+    setLocalSyncData(sync);
+    setSyncData(sync); // lift to Dashboard
   };
 
   return (
@@ -37,16 +40,20 @@ const LipSyncEngine = ({ setSyncData }) => {
       </div>
       <button onClick={handleGenerate}>Generate Sync</button>
 
-      {syncData.length > 0 && (
+      {localSyncData.length > 0 && (
         <div style={{ marginTop: '2rem' }}>
           <h3>🗣️ Sync Preview</h3>
           <ul>
-            {syncData.map((s, i) => (
+            {localSyncData.map((s, i) => (
               <li key={i}>
                 <strong>{s.word}</strong> → {s.phoneme} ({s.start.toFixed(2)}s–{s.end.toFixed(2)}s) [{s.emotionOverlay}]
               </li>
             ))}
           </ul>
+
+          <div style={{ marginTop: '2rem' }}>
+            <PetAvatar syncData={localSyncData} />
+          </div>
         </div>
       )}
     </section>
