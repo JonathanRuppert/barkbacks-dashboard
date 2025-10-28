@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { WebSocketContext } from '../context/WebSocketContext';
-import EchoDepth from './EchoDepthVisualizer';
+import EchoDepthVisualizer from './EchoDepthVisualizer';
 import PulseSync from './PulseSyncVisualizer';
 import Cascade from './CascadeVisualizer';
 import OrbitTrail from './OrbitTrailVisualizer';
@@ -13,7 +13,8 @@ import RemixLineage from './RemixLineage';
 import PetArc from './PetArc';
 import EmotionDiversity from './EmotionDiversity';
 import EmotionRemixTracker from './EmotionRemixTracker';
-import EchoDepthVisualizer from './EchoDepthVisualizer';
+import Aurora from './Aurora';
+
 
 
 const Dashboard = () => {
@@ -52,8 +53,8 @@ const Dashboard = () => {
       </section>
 
       <section style={{ marginBottom: '3rem' }}>
-        <h2>🔬 EchoDepth</h2>
-        <EchoDepth creatorId="jonathan" debug />
+        <h2>🔬 EchoDepthVisualizer</h2>
+        <EchoDepthVisualizer creatorId="jonathan" debug />
       </section>
 
       <section style={{ marginBottom: '3rem' }}>
@@ -112,9 +113,8 @@ const Dashboard = () => {
       </section>
 
      <section style={{ marginBottom: '3rem' }}>
-       <EchoDepthVisualizer />
+       <Aurora />
       </section>
-
 
       <section style={{ marginBottom: '3rem' }}>
         <h2>🛰️ Constellation</h2>
