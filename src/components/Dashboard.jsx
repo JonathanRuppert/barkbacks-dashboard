@@ -13,6 +13,8 @@ import RemixLineage from './RemixLineage';
 import PetArc from './PetArc';
 import EmotionDiversity from './EmotionDiversity';
 import EmotionRemixTracker from './EmotionRemixTracker';
+import EchoDepthVisualizer from './EchoDepthVisualizer';
+
 
 const Dashboard = () => {
   const socket = useContext(WebSocketContext);
@@ -108,6 +110,11 @@ const Dashboard = () => {
        <h2>🔁 Emotion Remix Tracker</h2>
        <EmotionRemixTracker />
       </section>
+
+     <section style={{ marginBottom: '3rem' }}>
+       <EchoDepthVisualizer />
+      </section>
+
 
       <section style={{ marginBottom: '3rem' }}>
         <h2>🛰️ Constellation</h2>

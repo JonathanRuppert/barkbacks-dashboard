@@ -1,32 +1,45 @@
 import React, { useEffect, useState } from 'react';
 
-const EchoDepthVisualizer = ({ creatorId }) => {
-  const [data, setData] = useState(null);
+const EchoDepthVisualizer = () => {
+  const [depthStats, setDepthStats] = useState([]);
 
   useEffect(() => {
-    console.log('Fetching EchoDepth...');
-    fetch('https://barkbacks-api.onrender.com/api/echodepth/' + creatorId)
-      .then(res => res.json())
-      .then(json => {
-        console.log('EchoDepth data:', json);
-        setData(json);
-      })
-      .catch(err => {
-        console.error('EchoDepth fetch error:', err);
-      });
-  }, [creatorId]);
+    const fetchDepthStats = async () => {
+      const res = await fetch('https://barkbacks-api.onrender.com/api/emotion-depth-analyzer');
+      const data = await res.json();
+      setDepthStats(data.depthStats || []);
+    };
+    fetchDepthStats();
+  }, []);
 
   return (
-    <div style={{ padding: '1rem', background: '#fff', border: '1px solid #ccc' }}>
-      <h3>EchoDepth Debug</h3>
-      {data ? (
-        <pre style={{ fontSize: '0.8rem', overflowX: 'auto' }}>
-          {JSON.stringify(data, null, 2)}
-        </pre>
+    <section style={{ padding: '2rem', backgroundColor: '#fff' }}>
+      <h2>🧠 EchoDepth Visualizer</h2>
+      {depthStats.length === 0 ? (
+        <p>No depth data available...</p>
       ) : (
-        <p>Loading or no data...</p>
+        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <thead>
+            <tr>
+              <th style={{ textAlign: 'left' }}>Emotion</th>
+              <th style={{ textAlign: 'right' }}>Total</th>
+              <th style={{ textAlign: 'right' }}>Avg Depth</th>
+              <th style={{ textAlign: 'right' }}>Max Depth</th>
+            </tr>
+          </thead>
+          <tbody>
+            {depthStats.map((e, i) => (
+              <tr key={i}>
+                <td>{e.emotion}</td>
+                <td style={{ textAlign: 'right' }}>{e.total}</td>
+                <td style={{ textAlign: 'right' }}>{e.avgDepth}</td>
+                <td style={{ textAlign: 'right' }}>{e.maxDepth}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
-    </div>
+    </section>
   );
 };
 
